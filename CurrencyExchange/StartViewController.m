@@ -18,6 +18,7 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     
+    
     //Label
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, [self.view bounds].size.width, 50)];
     [label setBackgroundColor:[UIColor lightGrayColor]];
