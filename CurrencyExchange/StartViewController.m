@@ -7,6 +7,7 @@
 //
 
 #import "StartViewController.h"
+#import "MainViewController.h"
 
 @interface StartViewController ()
 
@@ -17,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-    
     
     //Label
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, [self.view bounds].size.width, 50)];
@@ -34,7 +34,25 @@
     [logo setBackgroundColor:[UIColor lightGrayColor]];
     [logo setContentMode:UIViewContentModeScaleAspectFill];
     [self.view addSubview:logo];
+    
+    //Button
+    UIButton *startButton = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 100, 600, 200, 30)];
+    [startButton setTitle:@"Push to start" forState:UIControlStateNormal];
+    [startButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [startButton addTarget:self action:@selector(openMainViewController) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:startButton];
+    
+    //ActivityIndicator
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 100, [self.view bounds].size.height - 200, 200, 200)];
+    [activityIndicator setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyleWhiteLarge)];
+    [activityIndicator setHidesWhenStopped:true];
+    [activityIndicator startAnimating];
+    [self.view addSubview:activityIndicator];
 }
 
+-(void) openMainViewController {
+    MainViewController *mainViewController = [[MainViewController alloc] init];
+    [self presentViewController:mainViewController animated:true completion:nil];
+};
 
 @end
