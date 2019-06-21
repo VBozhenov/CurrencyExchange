@@ -53,10 +53,10 @@
     
     //ActivityIndicator
     UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]
-                                                  initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 100,
+                                                  initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 25,
                                                                            [self.view bounds].size.height - 200,
-                                                                           200,
-                                                                           200)];
+                                                                           50,
+                                                                           50)];
     [activityIndicator setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyleWhiteLarge)];
     [activityIndicator setHidesWhenStopped:true];
     [activityIndicator startAnimating];
