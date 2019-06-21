@@ -20,7 +20,10 @@
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     
     //Label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, [self.view bounds].size.width, 50)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                               100,
+                                                               [self.view bounds].size.width,
+                                                               50)];
     [label setBackgroundColor:[UIColor lightGrayColor]];
     [label setTextColor:[UIColor blueColor]];
     [label setText:@"CURRENCY EXCHANGE"];
@@ -29,21 +32,31 @@
     [self.view addSubview:label];
     
     //ImageView
-    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 250, [self.view bounds].size.width, 100)];
+    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                      250,
+                                                                      [self.view bounds].size.width,
+                                                                      100)];
     [logo setImage:[UIImage imageNamed:@"konverter"]];
     [logo setBackgroundColor:[UIColor lightGrayColor]];
     [logo setContentMode:UIViewContentModeScaleAspectFill];
     [self.view addSubview:logo];
     
     //Button
-    UIButton *startButton = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 100, 600, 200, 30)];
+    UIButton *startButton = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 100,
+                                                                       600,
+                                                                       200,
+                                                                       30)];
     [startButton setTitle:@"Push to start" forState:UIControlStateNormal];
     [startButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [startButton addTarget:self action:@selector(openMainViewController) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:startButton];
     
     //ActivityIndicator
-    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 100, [self.view bounds].size.height - 200, 200, 200)];
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc]
+                                                  initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 100,
+                                                                           [self.view bounds].size.height - 200,
+                                                                           200,
+                                                                           200)];
     [activityIndicator setActivityIndicatorViewStyle:(UIActivityIndicatorViewStyleWhiteLarge)];
     [activityIndicator setHidesWhenStopped:true];
     [activityIndicator startAnimating];
