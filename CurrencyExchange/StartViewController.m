@@ -43,7 +43,7 @@
     
     //Button
     UIButton *startButton = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 100,
-                                                                       600,
+                                                                       500,
                                                                        200,
                                                                        30)];
     [startButton setTitle:@"Push to start" forState:UIControlStateNormal];
