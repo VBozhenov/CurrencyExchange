@@ -52,7 +52,7 @@
 
 -(void) openMainViewController {
     MainViewController *mainViewController = [[MainViewController alloc] init];
-    [self presentViewController:mainViewController animated:true completion:nil];
+    [self.navigationController pushViewController:mainViewController animated:true];
 };
 
 @end
