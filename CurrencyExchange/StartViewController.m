@@ -28,7 +28,8 @@
     [label setTextColor:[UIColor blueColor]];
     [label setText:@"CURRENCY EXCHANGE"];
     [label setTextAlignment:(NSTextAlignmentCenter)];
-    [label setFont:[UIFont systemFontOfSize:30 weight:(UIFontWeightBold)]];
+    [label setFont:[UIFont systemFontOfSize:30
+                                     weight:(UIFontWeightBold)]];
     [self.view addSubview:label];
     
     //ImageView
@@ -48,7 +49,8 @@
                                                                        30)];
     [startButton setTitle:@"Push to start" forState:UIControlStateNormal];
     [startButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [startButton addTarget:self action:@selector(openMainViewController) forControlEvents:(UIControlEventTouchUpInside)];
+    [startButton addTarget:self action:@selector(openMainViewController)
+          forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:startButton];
     
     //ActivityIndicator

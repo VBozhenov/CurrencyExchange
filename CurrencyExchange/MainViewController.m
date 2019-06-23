@@ -46,7 +46,8 @@
                                                                                      100)];
     [self.fromSegmentedControl initWithItems:self.currency];
     [self.fromSegmentedControl setSelectedSegmentIndex:0];
-    [self.fromSegmentedControl addTarget:self action:@selector(changeSegment:) forControlEvents:(UIControlEventValueChanged)];
+    [self.fromSegmentedControl addTarget:self action:@selector(changeSegment:)
+                        forControlEvents:(UIControlEventValueChanged)];
     [self.view addSubview:self.fromSegmentedControl];
     
     self.toSegmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5,
@@ -55,7 +56,8 @@
                                                                                    100)];
     [self.toSegmentedControl initWithItems:self.currency];
     [self.toSegmentedControl setSelectedSegmentIndex:0];
-    [self.toSegmentedControl addTarget:self action:@selector(changeSegment:) forControlEvents:(UIControlEventValueChanged)];
+    [self.toSegmentedControl addTarget:self action:@selector(changeSegment:)
+                      forControlEvents:(UIControlEventValueChanged)];
     [self.view addSubview:self.toSegmentedControl];
     
     //Labels
@@ -66,7 +68,8 @@
     [labelFrom setTextColor:[UIColor blueColor]];
     [labelFrom setText:@"Convert from:"];
     [labelFrom setTextAlignment:(NSTextAlignmentCenter)];
-    [labelFrom setFont:[UIFont systemFontOfSize:30 weight:(UIFontWeightBold)]];
+    [labelFrom setFont:[UIFont systemFontOfSize:30
+                                         weight:(UIFontWeightBold)]];
     [self.view addSubview:labelFrom];
     
     UILabel *labelTo = [[UILabel alloc] initWithFrame:CGRectMake(0,
@@ -76,7 +79,8 @@
     [labelTo setTextColor:[UIColor blueColor]];
     [labelTo setText:@"Convert to:"];
     [labelTo setTextAlignment:(NSTextAlignmentCenter)];
-    [labelTo setFont:[UIFont systemFontOfSize:30 weight:(UIFontWeightBold)]];
+    [labelTo setFont:[UIFont systemFontOfSize:30
+                                       weight:(UIFontWeightBold)]];
     [self.view addSubview:labelTo];
     
     self.resultLabel = [[UILabel alloc] initWithFrame:CGRectMake(150,
@@ -86,7 +90,8 @@
     [self.resultLabel setTextColor:[UIColor blueColor]];
     [self.resultLabel setText:@"0"];
     [self.resultLabel setTextAlignment:(NSTextAlignmentCenter)];
-    [self.resultLabel setFont:[UIFont systemFontOfSize:30 weight:(UIFontWeightBold)]];
+    [self.resultLabel setFont:[UIFont systemFontOfSize:30
+                                                weight:(UIFontWeightBold)]];
     [self.view addSubview:self.resultLabel];
     
     self.fromCurrencyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
@@ -96,7 +101,8 @@
     [self.fromCurrencyLabel setTextColor:[UIColor blueColor]];
     [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.currency[[self.fromSegmentedControl selectedSegmentIndex]]]];
     [self.fromCurrencyLabel setTextAlignment:(NSTextAlignmentCenter)];
-    [self.fromCurrencyLabel setFont:[UIFont systemFontOfSize:30 weight:(UIFontWeightBold)]];
+    [self.fromCurrencyLabel setFont:[UIFont systemFontOfSize:30
+                                                      weight:(UIFontWeightBold)]];
     [self.view addSubview:self.fromCurrencyLabel];
     
     self.toCurrencyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
@@ -106,7 +112,8 @@
     [self.toCurrencyLabel setTextColor:[UIColor blueColor]];
     [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.currency[[self.toSegmentedControl selectedSegmentIndex]]]];
     [self.toCurrencyLabel setTextAlignment:(NSTextAlignmentCenter)];
-    [self.toCurrencyLabel setFont:[UIFont systemFontOfSize:30 weight:(UIFontWeightBold)]];
+    [self.toCurrencyLabel setFont:[UIFont systemFontOfSize:30
+                                                    weight:(UIFontWeightBold)]];
     [self.view addSubview:self.toCurrencyLabel];
     
     //TextField
@@ -119,7 +126,8 @@
     [self.inputValueTextField setBorderStyle:(UITextBorderStyleLine)];
     [self.inputValueTextField setPlaceholder:@"Enter value"];
     [self.inputValueTextField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-    [self.inputValueTextField addTarget:self action:@selector(updateResults) forControlEvents:(UIControlEventEditingChanged)];
+    [self.inputValueTextField addTarget:self action:@selector(updateResults)
+                       forControlEvents:(UIControlEventEditingChanged)];
     [self.view addSubview:self.inputValueTextField];
     
 }
