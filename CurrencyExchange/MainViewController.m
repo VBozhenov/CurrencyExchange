@@ -41,7 +41,7 @@
     
     //Segmented controls
     self.fromSegmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5,
-                                                                                     200,
+                                                                                     150,
                                                                                      [self.view bounds].size.width - 10,
                                                                                      100)];
     [self.fromSegmentedControl initWithItems:self.currency];
@@ -50,7 +50,7 @@
     [self.view addSubview:self.fromSegmentedControl];
     
     self.toSegmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5,
-                                                                                   500,
+                                                                                   400,
                                                                                    [self.view bounds].size.width - 10,
                                                                                    100)];
     [self.toSegmentedControl initWithItems:self.currency];
@@ -60,7 +60,7 @@
     
     //Labels
     UILabel *labelFrom = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                   150,
+                                                                   100,
                                                                    [self.view bounds].size.width,
                                                                    50)];
     [labelFrom setTextColor:[UIColor blueColor]];
@@ -70,7 +70,7 @@
     [self.view addSubview:labelFrom];
     
     UILabel *labelTo = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                 450,
+                                                                 350,
                                                                  [self.view bounds].size.width,
                                                                  50)];
     [labelTo setTextColor:[UIColor blueColor]];
@@ -80,7 +80,7 @@
     [self.view addSubview:labelTo];
     
     self.resultLabel = [[UILabel alloc] initWithFrame:CGRectMake(150,
-                                                                 600,
+                                                                 500,
                                                                  [self.view bounds].size.width - 200,
                                                                  50)];
     [self.resultLabel setTextColor:[UIColor blueColor]];
@@ -90,7 +90,7 @@
     [self.view addSubview:self.resultLabel];
     
     self.fromCurrencyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                       275,
+                                                                       225,
                                                                        150,
                                                                        100)];
     [self.fromCurrencyLabel setTextColor:[UIColor blueColor]];
@@ -100,7 +100,7 @@
     [self.view addSubview:self.fromCurrencyLabel];
     
     self.toCurrencyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                     575,
+                                                                     475,
                                                                      150,
                                                                      100)];
     [self.toCurrencyLabel setTextColor:[UIColor blueColor]];
@@ -111,7 +111,7 @@
     
     //TextField
     self.inputValueTextField = [[UITextField alloc] initWithFrame:CGRectMake(150,
-                                                                             300,
+                                                                             250,
                                                                              [self.view bounds].size.width - 200,
                                                                              50)];
     self.inputValueTextField.delegate = self;
