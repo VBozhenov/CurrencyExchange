@@ -114,9 +114,11 @@
                                                                              300,
                                                                              [self.view bounds].size.width - 200,
                                                                              50)];
+    self.inputValueTextField.delegate = self;
     [self.inputValueTextField setBackgroundColor:[UIColor whiteColor]];
     [self.inputValueTextField setBorderStyle:(UITextBorderStyleLine)];
     [self.inputValueTextField setPlaceholder:@"Enter value"];
+    [self.inputValueTextField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
     [self.inputValueTextField addTarget:self action:@selector(updateResults) forControlEvents:(UIControlEventEditingChanged)];
     [self.view addSubview:self.inputValueTextField];
     
@@ -136,6 +138,11 @@
     float input = [[self.inputValueTextField text] floatValue];
     [self.resultLabel setText:[NSString stringWithFormat:@"%.2f", input / ratio]];
     
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return true;
 }
 
 @end
