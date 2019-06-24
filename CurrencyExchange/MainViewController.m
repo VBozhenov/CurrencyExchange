@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "Currency.h"
 
 @interface MainViewController ()
 
@@ -15,8 +16,8 @@
 @property (nonatomic, strong) UILabel *toCurrencyLabel;
 @property (nonatomic, strong) UISegmentedControl *fromSegmentedControl;
 @property (nonatomic, strong) UISegmentedControl *toSegmentedControl;
-@property (nonatomic, strong) NSDictionary *currencyValues;
-@property (nonatomic, strong) NSArray *currency;
+@property (nonatomic, strong) NSMutableArray<Currency*> *myCurrencies;
+@property (nonatomic, strong) NSMutableArray *currency;
 @property (nonatomic, strong) UITextField *inputValueTextField;
 
 @end
@@ -27,14 +28,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.currencyValues = @{@"🇷🇺 ₽" : @1.0,
-                            @"🇺🇸 $" : @62.41,
-                            @"🇪🇺 €" : @70.56,
-                            @"🇬🇧 £" : @79.33,
-                          @"🇨🇭 CHF" : @63.58
-                            };
+    self.myCurrencies = [[NSMutableArray<Currency*> alloc] initWithObjects:
+                       ([[Currency alloc] initWithFlag:@"🇷🇺" name:@"₽" value:@1.0]),
+                       ([[Currency alloc] initWithFlag:@"🇺🇸" name:@"$" value:@62.41]),
+                       ([[Currency alloc] initWithFlag:@"🇪🇺" name:@"€" value:@70.56]),
+                       ([[Currency alloc] initWithFlag:@"🇬🇧" name:@"£" value:@79.33]),
+                       ([[Currency alloc] initWithFlag:@"🇨🇭" name:@"CHF" value:@63.58]),
+                       nil];
+        
+    self.currency = [NSMutableArray new];
     
-    self.currency = [self.currencyValues allKeys];
+    for (Currency *currency in self.myCurrencies) {
+        [self.currency addObject:currency.fullName];
+    };
 
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     self.title = @"Currency Exchange";
@@ -142,7 +148,7 @@
 }
 
 - (void) updateResults {
-    float ratio = [[self.currencyValues valueForKey:self.currency[[self.toSegmentedControl selectedSegmentIndex]]] floatValue] / [[self.currencyValues valueForKey:self.currency[[self.fromSegmentedControl selectedSegmentIndex]]] floatValue];
+    float ratio = [self.myCurrencies[[self.toSegmentedControl selectedSegmentIndex]].value floatValue] / [self.myCurrencies[[self.fromSegmentedControl selectedSegmentIndex]].value floatValue];
     float input = [[self.inputValueTextField text] floatValue];
     [self.resultLabel setText:[NSString stringWithFormat:@"%.2f", input / ratio]];
     
