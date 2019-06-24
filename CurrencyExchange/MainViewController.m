@@ -88,7 +88,7 @@
                                                                  [self.view bounds].size.width - 200,
                                                                  50)];
     [self.resultLabel setTextColor:[UIColor blueColor]];
-    [self.resultLabel setText:@"0"];
+    [self.resultLabel setText:@"0.00"];
     [self.resultLabel setTextAlignment:(NSTextAlignmentCenter)];
     [self.resultLabel setFont:[UIFont systemFontOfSize:30
                                                 weight:(UIFontWeightBold)]];
