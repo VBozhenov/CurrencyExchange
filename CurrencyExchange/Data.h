@@ -1,19 +1,22 @@
 //
-//  EditViewController.h
+//  Data.h
 //  CurrencyExchange
 //
 //  Created by Vladimir Bozhenov on 25/06/2019.
 //  Copyright © 2019 Vladimir Bozhenov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "MainViewController.h"
+#import <Foundation/Foundation.h>
 #import "Currency.h"
-#import "Data.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditViewController : UIViewController
+@interface Data : NSObject {
+}
+
++ (Data *)sharedObject;
+@property NSMutableArray<Currency *> *myCurrencies;
+@property NSMutableArray<Currency *> *currenciesToAdd;
 
 @end
 

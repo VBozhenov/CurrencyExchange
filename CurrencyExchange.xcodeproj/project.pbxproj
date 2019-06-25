@@ -15,6 +15,7 @@
 		E77688BF22BC49E7009495B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688BE22BC49E7009495B9 /* main.m */; };
 		E77688C722BC53FC009495B9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688C622BC53FC009495B9 /* MainViewController.m */; };
 		E7B3A2E822C1EF7100DD5724 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2E722C1EF7100DD5724 /* EditViewController.m */; };
+		E7B3A2EE22C2006200DD5724 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2ED22C2006200DD5724 /* Data.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		E77688C622BC53FC009495B9 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E7B3A2E622C1EF7100DD5724 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		E7B3A2E722C1EF7100DD5724 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		E7B3A2EC22C2006200DD5724 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		E7B3A2ED22C2006200DD5724 /* Data.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,8 @@
 				E7B3A2E722C1EF7100DD5724 /* EditViewController.m */,
 				E75AE71922C17CF80039BF91 /* Currency.h */,
 				E75AE71A22C17CF80039BF91 /* Currency.m */,
+				E7B3A2EC22C2006200DD5724 /* Data.h */,
+				E7B3A2ED22C2006200DD5724 /* Data.m */,
 				E77688B822BC49E7009495B9 /* Assets.xcassets */,
 				E77688BA22BC49E7009495B9 /* LaunchScreen.storyboard */,
 				E77688BD22BC49E7009495B9 /* Info.plist */,
@@ -156,6 +161,7 @@
 				E77688BF22BC49E7009495B9 /* main.m in Sources */,
 				E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */,
 				E77688C722BC53FC009495B9 /* MainViewController.m in Sources */,
+				E7B3A2EE22C2006200DD5724 /* Data.m in Sources */,
 				E7B3A2E822C1EF7100DD5724 /* EditViewController.m in Sources */,
 				E75AE71B22C17CF80039BF91 /* Currency.m in Sources */,
 			);

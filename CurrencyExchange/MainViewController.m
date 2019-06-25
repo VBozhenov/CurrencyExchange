@@ -7,8 +7,9 @@
 //
 
 #import "MainViewController.h"
-#import "Currency.h"
+//#import "Currency.h"
 #import "EditViewController.h"
+#import "Data.h"
 
 @interface MainViewController ()
 
@@ -17,10 +18,6 @@
 @property (nonatomic, strong) UILabel *toCurrencyLabel;
 @property (nonatomic, strong) UISegmentedControl *fromSegmentedControl;
 @property (nonatomic, strong) UISegmentedControl *toSegmentedControl;
-@property (nonatomic, strong) NSMutableArray<Currency*> *myCurrencies;
-@property (nonatomic, strong) NSMutableArray<Currency*> *currenciesToAdd;
-@property (nonatomic, strong) NSMutableArray *myCurrency;
-@property (nonatomic, strong) NSMutableArray *currencyToAdd;
 @property (nonatomic, strong) UITextField *inputValueTextField;
 
 @end
@@ -30,34 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.myCurrencies = [[NSMutableArray<Currency*> alloc] initWithObjects:
-                       ([[Currency alloc] initWithFlag:@"🇷🇺" name:@"₽" value:@1.0]),
-                       ([[Currency alloc] initWithFlag:@"🇺🇸" name:@"$" value:@62.41]),
-                       ([[Currency alloc] initWithFlag:@"🇪🇺" name:@"€" value:@70.56]),
-                       ([[Currency alloc] initWithFlag:@"🇬🇧" name:@"£" value:@79.33]),
-                       ([[Currency alloc] initWithFlag:@"🇨🇭" name:@"CHF" value:@63.58]),
-                       nil];
-    
-    self.currenciesToAdd = [[NSMutableArray<Currency*> alloc] initWithObjects:
-                            ([[Currency alloc] initWithFlag:@"🇺🇦" name:@"UAH" value:@1.0]),
-                            ([[Currency alloc] initWithFlag:@"🇳🇿" name:@"NZ$" value:@62.41]),
-                            ([[Currency alloc] initWithFlag:@"🇨🇦" name:@"$" value:@70.56]),
-                            ([[Currency alloc] initWithFlag:@"🇦🇺" name:@"A$" value:@79.33]),
-                            nil];
         
     self.myCurrency = [NSMutableArray new];
     
-    for (Currency *currency in self.myCurrencies) {
+    for (Currency *currency in [Data sharedObject].myCurrencies) {
         [self.myCurrency addObject:currency.fullName];
     };
-    
-    self.currencyToAdd = [NSMutableArray new];
-    
-    for (Currency *currency in self.currenciesToAdd) {
-        [self.currencyToAdd addObject:currency.fullName];
-    };
-
 
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     self.title = @"Currency Exchange";
@@ -67,6 +42,7 @@
                                                                                      150,
                                                                                      [self.view bounds].size.width - 10,
                                                                                      100)];
+    [self.fromSegmentedControl reloadInputViews];
     [self.fromSegmentedControl initWithItems:self.myCurrency];
     [self.fromSegmentedControl setSelectedSegmentIndex:0];
     [self.fromSegmentedControl addTarget:self action:@selector(changeSegment:)
@@ -170,7 +146,7 @@
 }
 
 - (void) updateResults {
-    float ratio = [self.myCurrencies[[self.toSegmentedControl selectedSegmentIndex]].value floatValue] / [self.myCurrencies[[self.fromSegmentedControl selectedSegmentIndex]].value floatValue];
+    float ratio = [[Data sharedObject].myCurrencies[[self.toSegmentedControl selectedSegmentIndex]].value floatValue] / [[Data sharedObject].myCurrencies[[self.fromSegmentedControl selectedSegmentIndex]].value floatValue];
     float input = [[self.inputValueTextField text] floatValue];
     [self.resultLabel setText:[NSString stringWithFormat:@"%.2f", input / ratio]];
     
