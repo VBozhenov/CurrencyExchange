@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "Currency.h"
+#import "EditViewController.h"
 
 @interface MainViewController ()
 
@@ -17,7 +18,9 @@
 @property (nonatomic, strong) UISegmentedControl *fromSegmentedControl;
 @property (nonatomic, strong) UISegmentedControl *toSegmentedControl;
 @property (nonatomic, strong) NSMutableArray<Currency*> *myCurrencies;
-@property (nonatomic, strong) NSMutableArray *currency;
+@property (nonatomic, strong) NSMutableArray<Currency*> *currenciesToAdd;
+@property (nonatomic, strong) NSMutableArray *myCurrency;
+@property (nonatomic, strong) NSMutableArray *currencyToAdd;
 @property (nonatomic, strong) UITextField *inputValueTextField;
 
 @end
@@ -35,12 +38,26 @@
                        ([[Currency alloc] initWithFlag:@"🇬🇧" name:@"£" value:@79.33]),
                        ([[Currency alloc] initWithFlag:@"🇨🇭" name:@"CHF" value:@63.58]),
                        nil];
+    
+    self.currenciesToAdd = [[NSMutableArray<Currency*> alloc] initWithObjects:
+                            ([[Currency alloc] initWithFlag:@"🇺🇦" name:@"UAH" value:@1.0]),
+                            ([[Currency alloc] initWithFlag:@"🇳🇿" name:@"NZ$" value:@62.41]),
+                            ([[Currency alloc] initWithFlag:@"🇨🇦" name:@"$" value:@70.56]),
+                            ([[Currency alloc] initWithFlag:@"🇦🇺" name:@"A$" value:@79.33]),
+                            nil];
         
-    self.currency = [NSMutableArray new];
+    self.myCurrency = [NSMutableArray new];
     
     for (Currency *currency in self.myCurrencies) {
-        [self.currency addObject:currency.fullName];
+        [self.myCurrency addObject:currency.fullName];
     };
+    
+    self.currencyToAdd = [NSMutableArray new];
+    
+    for (Currency *currency in self.currenciesToAdd) {
+        [self.currencyToAdd addObject:currency.fullName];
+    };
+
 
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     self.title = @"Currency Exchange";
@@ -50,7 +67,7 @@
                                                                                      150,
                                                                                      [self.view bounds].size.width - 10,
                                                                                      100)];
-    [self.fromSegmentedControl initWithItems:self.currency];
+    [self.fromSegmentedControl initWithItems:self.myCurrency];
     [self.fromSegmentedControl setSelectedSegmentIndex:0];
     [self.fromSegmentedControl addTarget:self action:@selector(changeSegment:)
                         forControlEvents:(UIControlEventValueChanged)];
@@ -60,7 +77,7 @@
                                                                                    400,
                                                                                    [self.view bounds].size.width - 10,
                                                                                    100)];
-    [self.toSegmentedControl initWithItems:self.currency];
+    [self.toSegmentedControl initWithItems:self.myCurrency];
     [self.toSegmentedControl setSelectedSegmentIndex:0];
     [self.toSegmentedControl addTarget:self action:@selector(changeSegment:)
                       forControlEvents:(UIControlEventValueChanged)];
@@ -105,7 +122,7 @@
                                                                        150,
                                                                        100)];
     [self.fromCurrencyLabel setTextColor:[UIColor blueColor]];
-    [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.currency[[self.fromSegmentedControl selectedSegmentIndex]]]];
+    [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.myCurrency[[self.fromSegmentedControl selectedSegmentIndex]]]];
     [self.fromCurrencyLabel setTextAlignment:(NSTextAlignmentCenter)];
     [self.fromCurrencyLabel setFont:[UIFont systemFontOfSize:30
                                                       weight:(UIFontWeightBold)]];
@@ -116,7 +133,7 @@
                                                                      150,
                                                                      100)];
     [self.toCurrencyLabel setTextColor:[UIColor blueColor]];
-    [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.currency[[self.toSegmentedControl selectedSegmentIndex]]]];
+    [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.myCurrency[[self.toSegmentedControl selectedSegmentIndex]]]];
     [self.toCurrencyLabel setTextAlignment:(NSTextAlignmentCenter)];
     [self.toCurrencyLabel setFont:[UIFont systemFontOfSize:30
                                                     weight:(UIFontWeightBold)]];
@@ -136,13 +153,18 @@
                        forControlEvents:(UIControlEventEditingChanged)];
     [self.view addSubview:self.inputValueTextField];
     
+    //BarButtonItem
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemEdit)
+                                                                                   target:self
+                                                                                   action:@selector(barButtonTaped)];
+    self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
 - (void)changeSegment:(UISegmentedControl*)sender {
     if (sender == self.fromSegmentedControl) {
-        [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.currency[[sender selectedSegmentIndex]]]];
+        [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.myCurrency[[sender selectedSegmentIndex]]]];
     } else {
-        [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.currency[[sender selectedSegmentIndex]]]];
+        [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.myCurrency[[sender selectedSegmentIndex]]]];
     }
     self.updateResults;
 }
@@ -157,6 +179,11 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return true;
+}
+
+- (void) barButtonTaped {
+    EditViewController *editViewController = [[EditViewController alloc] init];
+    [self.navigationController pushViewController:editViewController animated:true];
 }
 
 @end
