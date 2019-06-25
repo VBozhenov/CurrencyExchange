@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainViewController : UIViewController
 
-@property (nonatomic, strong) NSMutableArray *myCurrency;
+@property (nonatomic, strong) UISegmentedControl *fromSegmentedControl;
+@property (nonatomic, strong) UISegmentedControl *toSegmentedControl;
 
 @end
 

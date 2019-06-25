@@ -16,8 +16,8 @@
 @property (nonatomic, strong) UILabel *resultLabel;
 @property (nonatomic, strong) UILabel *fromCurrencyLabel;
 @property (nonatomic, strong) UILabel *toCurrencyLabel;
-@property (nonatomic, strong) UISegmentedControl *fromSegmentedControl;
-@property (nonatomic, strong) UISegmentedControl *toSegmentedControl;
+//@property (nonatomic, strong) UISegmentedControl *fromSegmentedControl;
+//@property (nonatomic, strong) UISegmentedControl *toSegmentedControl;
 @property (nonatomic, strong) UITextField *inputValueTextField;
 
 @end
@@ -27,23 +27,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
-    self.myCurrency = [NSMutableArray new];
-    
-    for (Currency *currency in [Data sharedObject].myCurrencies) {
-        [self.myCurrency addObject:currency.fullName];
-    };
 
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     self.title = @"Currency Exchange";
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.fromSegmentedControl removeAllSegments];
+    [self.toSegmentedControl removeAllSegments];
+    [self.fromCurrencyLabel removeFromSuperview];
+    [self.toCurrencyLabel removeFromSuperview];
+    [self.resultLabel removeFromSuperview];
     
     //Segmented controls
     self.fromSegmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5,
                                                                                      150,
                                                                                      [self.view bounds].size.width - 10,
-                                                                                     100)];
-    [self.fromSegmentedControl reloadInputViews];
-    [self.fromSegmentedControl initWithItems:self.myCurrency];
+                                                                                     20)];
+    for (int index = 0; index < [[Data sharedObject].myCurrencies count]; index++) {
+        [self.fromSegmentedControl insertSegmentWithTitle:[Data sharedObject].myCurrencies[index].fullName
+                                                  atIndex:index animated:false];
+    }
+    
     [self.fromSegmentedControl setSelectedSegmentIndex:0];
     [self.fromSegmentedControl addTarget:self action:@selector(changeSegment:)
                         forControlEvents:(UIControlEventValueChanged)];
@@ -52,8 +58,11 @@
     self.toSegmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5,
                                                                                    400,
                                                                                    [self.view bounds].size.width - 10,
-                                                                                   100)];
-    [self.toSegmentedControl initWithItems:self.myCurrency];
+                                                                                   20)];
+    for (int index = 0; index < [[Data sharedObject].myCurrencies count]; index++) {
+        [self.toSegmentedControl insertSegmentWithTitle:[Data sharedObject].myCurrencies[index].fullName
+                                                atIndex:index animated:false];
+    }
     [self.toSegmentedControl setSelectedSegmentIndex:0];
     [self.toSegmentedControl addTarget:self action:@selector(changeSegment:)
                       forControlEvents:(UIControlEventValueChanged)];
@@ -98,7 +107,7 @@
                                                                        150,
                                                                        100)];
     [self.fromCurrencyLabel setTextColor:[UIColor blueColor]];
-    [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.myCurrency[[self.fromSegmentedControl selectedSegmentIndex]]]];
+    [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", [Data sharedObject].myCurrencies[[self.fromSegmentedControl selectedSegmentIndex]].fullName]];
     [self.fromCurrencyLabel setTextAlignment:(NSTextAlignmentCenter)];
     [self.fromCurrencyLabel setFont:[UIFont systemFontOfSize:30
                                                       weight:(UIFontWeightBold)]];
@@ -109,7 +118,7 @@
                                                                      150,
                                                                      100)];
     [self.toCurrencyLabel setTextColor:[UIColor blueColor]];
-    [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.myCurrency[[self.toSegmentedControl selectedSegmentIndex]]]];
+    [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", [Data sharedObject].myCurrencies[[self.toSegmentedControl selectedSegmentIndex]].fullName]];
     [self.toCurrencyLabel setTextAlignment:(NSTextAlignmentCenter)];
     [self.toCurrencyLabel setFont:[UIFont systemFontOfSize:30
                                                     weight:(UIFontWeightBold)]];
@@ -138,9 +147,9 @@
 
 - (void)changeSegment:(UISegmentedControl*)sender {
     if (sender == self.fromSegmentedControl) {
-        [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.myCurrency[[sender selectedSegmentIndex]]]];
+        [self.fromCurrencyLabel setText:[NSString stringWithFormat:@"%@", [Data sharedObject].myCurrencies[[sender selectedSegmentIndex]].fullName]];
     } else {
-        [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", self.myCurrency[[sender selectedSegmentIndex]]]];
+        [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", [Data sharedObject].myCurrencies[[sender selectedSegmentIndex]].fullName]];
     }
     self.updateResults;
 }

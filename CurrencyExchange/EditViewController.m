@@ -16,9 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-    [[Data sharedObject].myCurrencies removeObjectAtIndex:0];
-    NSLog(@"%lu", (unsigned long)[[Data sharedObject].myCurrencies count]);
+    
 }
 @end
