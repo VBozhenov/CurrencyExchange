@@ -7,7 +7,6 @@
 //
 
 #import "MainViewController.h"
-//#import "Currency.h"
 #import "EditViewController.h"
 #import "Data.h"
 
@@ -131,7 +130,7 @@
                                                                                  250,
                                                                                  [self.view bounds].size.width - 200,
                                                                                  50)];
-        self.inputValueTextField.delegate = self;
+//        self.inputValueTextField.delegate = self;
         [self.inputValueTextField setBackgroundColor:[UIColor whiteColor]];
         [self.inputValueTextField setBorderStyle:(UITextBorderStyleLine)];
         [self.inputValueTextField setPlaceholder:@"Enter value"];
@@ -156,7 +155,7 @@
     } else {
         [self.toCurrencyLabel setText:[NSString stringWithFormat:@"%@", [Data sharedObject].myCurrencies[[sender selectedSegmentIndex]].fullName]];
     }
-    self.updateResults;
+    [self updateResults];
 }
 
 - (void) updateResults {

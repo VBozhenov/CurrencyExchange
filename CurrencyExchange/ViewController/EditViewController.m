@@ -8,6 +8,7 @@
 
 #import "EditViewController.h"
 #import "Data.h"
+#import "CurrencyTableViewCell.h"
 
 @interface EditViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,6 +25,12 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                   style:UITableViewStylePlain];
     
+    
+    self.tableView.rowHeight = 60;
+    
+    [self.tableView registerClass:[CurrencyTableViewCell class]
+           forCellReuseIdentifier:@"CurrencyTableViewCell"];
+    
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
     
@@ -39,28 +46,23 @@
     return 2;
 }
 
-- (NSString *)tableView:(UITableView *)tableView
-titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return section == 0 ? @"My Currencies" : @"Available Currencies";
 }
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return section == 0 ? [[Data sharedObject].myCurrencies count] : [[Data sharedObject].currenciesToAdd count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyCell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:@"CurrencyCell"];
-    }
+    CurrencyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyTableViewCell"];
+    
     if (indexPath.section == 0) {
-        cell.textLabel.text = [Data sharedObject].myCurrencies[indexPath.row].fullName;
+        [cell setupCellWithCurrency:[[Data sharedObject].myCurrencies objectAtIndex:indexPath.row]];
+
     } else {
-        cell.textLabel.text = [Data sharedObject].currenciesToAdd[indexPath.row].fullName;
+        [cell setupCellWithCurrency:[[Data sharedObject].currenciesToAdd objectAtIndex:indexPath.row]];
     }
 
     return cell;
@@ -68,8 +70,7 @@ titleForHeaderInSection:(NSInteger)section {
 
 #pragma mark - UITableViewDelegate -
 
-- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView
-                  editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewRowAction *act = [[UITableViewRowAction alloc] init];
     if (indexPath.section == 0) {
         act = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
@@ -86,7 +87,7 @@ titleForHeaderInSection:(NSInteger)section {
             [[Data sharedObject].myCurrencies addObject:[Data sharedObject].currenciesToAdd[indexPath.row]];
             [[Data sharedObject].currenciesToAdd removeObjectAtIndex:indexPath.row];
             [tableView reloadData];
-            [act setBackgroundColor:[UIColor blueColor]];
+            [act setBackgroundColor:[UIColor blueColor]]; // Не работает
         }];
     }
     return @[act];
