@@ -47,9 +47,12 @@
                                                                        500,
                                                                        200,
                                                                        30)];
-    [startButton setTitle:@"Push to start" forState:UIControlStateNormal];
-    [startButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [startButton addTarget:self action:@selector(openMainViewController)
+    [startButton setTitle:@"Push to start"
+                 forState:UIControlStateNormal];
+    [startButton setTitleColor:[UIColor blueColor]
+                      forState:UIControlStateNormal];
+    [startButton addTarget:self
+                    action:@selector(openMainViewController)
           forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:startButton];
     

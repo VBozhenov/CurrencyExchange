@@ -23,17 +23,17 @@
     if (self = [super init]) {
         self.myCurrencies = [[NSMutableArray<Currency*> alloc] initWithObjects:
                              ([[Currency alloc] initWithFlag:@"🇷🇺" name:@"₽" value:@1.0]),
-                             ([[Currency alloc] initWithFlag:@"🇺🇸" name:@"$" value:@62.41]),
-                             ([[Currency alloc] initWithFlag:@"🇪🇺" name:@"€" value:@70.56]),
-                             ([[Currency alloc] initWithFlag:@"🇬🇧" name:@"£" value:@79.33]),
-                             ([[Currency alloc] initWithFlag:@"🇨🇭" name:@"CHF" value:@63.58]),
+                             ([[Currency alloc] initWithFlag:@"🇺🇸" name:@"$" value:@62.94]),
+                             ([[Currency alloc] initWithFlag:@"🇪🇺" name:@"€" value:@71.58]),
+                             ([[Currency alloc] initWithFlag:@"🇬🇧" name:@"£" value:@80.14]),
+                             ([[Currency alloc] initWithFlag:@"🇨🇭" name:@"CHF" value:@64.47]),
                              nil];
         
         self.currenciesToAdd = [[NSMutableArray<Currency*> alloc] initWithObjects:
-                                ([[Currency alloc] initWithFlag:@"🇺🇦" name:@"UAH" value:@1.0]),
-                                ([[Currency alloc] initWithFlag:@"🇳🇿" name:@"NZ$" value:@62.41]),
-                                ([[Currency alloc] initWithFlag:@"🇨🇦" name:@"$" value:@70.56]),
-                                ([[Currency alloc] initWithFlag:@"🇦🇺" name:@"A$" value:@79.33]),
+                                ([[Currency alloc] initWithFlag:@"🇺🇦" name:@"UAH" value:@2.4]),
+                                ([[Currency alloc] initWithFlag:@"🇳🇿" name:@"NZ$" value:@41.56]),
+                                ([[Currency alloc] initWithFlag:@"🇨🇦" name:@"$" value:@47.71]),
+                                ([[Currency alloc] initWithFlag:@"🇦🇺" name:@"A$" value:@43.72]),
                                 nil];
     }
     return self;
