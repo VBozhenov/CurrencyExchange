@@ -130,7 +130,7 @@
                                                                                  250,
                                                                                  [self.view bounds].size.width - 200,
                                                                                  50)];
-//        self.inputValueTextField.delegate = self;
+        self.inputValueTextField.delegate = self;
         [self.inputValueTextField setBackgroundColor:[UIColor whiteColor]];
         [self.inputValueTextField setBorderStyle:(UITextBorderStyleLine)];
         [self.inputValueTextField setPlaceholder:@"Enter value"];
