@@ -10,17 +10,18 @@
 
 @implementation Currency
 
-- (instancetype)initWithFlag: (NSString*) flag
-                        name: (NSString*) name
-                       value: (NSNumber*) value
-{
+- (instancetype)initFromDictionary:(NSDictionary*)dictionary {
     self = [super init];
+    
     if (self) {
-        self.flag = flag;
-        self.name = name;
-        self.value = value;
-        self.fullName = [NSString stringWithFormat:@"%@ %@", flag, name];
+        self.charCode = [dictionary valueForKey:@"charCode"];
+        self.nominal = [dictionary valueForKey:@"nominal"];
+        self.name = [dictionary valueForKey:@"name"];
+        self.value = [dictionary valueForKey:@"value"];
+        self.previous = [dictionary valueForKey:@"previous"];
+
     }
+    
     return self;
 }
 

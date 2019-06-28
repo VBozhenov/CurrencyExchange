@@ -15,8 +15,8 @@
 		E77688BF22BC49E7009495B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688BE22BC49E7009495B9 /* main.m */; };
 		E77688C722BC53FC009495B9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688C622BC53FC009495B9 /* MainViewController.m */; };
 		E7B3A2E822C1EF7100DD5724 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2E722C1EF7100DD5724 /* EditViewController.m */; };
-		E7B3A2EE22C2006200DD5724 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2ED22C2006200DD5724 /* Data.m */; };
 		E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */; };
+		E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D19E9B22C6843D0068B186 /* NetworkService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,10 +35,10 @@
 		E77688C622BC53FC009495B9 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E7B3A2E622C1EF7100DD5724 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		E7B3A2E722C1EF7100DD5724 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
-		E7B3A2EC22C2006200DD5724 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
-		E7B3A2ED22C2006200DD5724 /* Data.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 		E7B3A2F122C2A45800DD5724 /* CurrencyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyTableViewCell.h; sourceTree = "<group>"; };
 		E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyTableViewCell.m; sourceTree = "<group>"; };
+		E7D19E9A22C6843D0068B186 /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
+		E7D19E9B22C6843D0068B186 /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +73,8 @@
 			children = (
 				E77688AF22BC49E7009495B9 /* AppDelegate.h */,
 				E77688B022BC49E7009495B9 /* AppDelegate.m */,
+				E7D19E9A22C6843D0068B186 /* NetworkService.h */,
+				E7D19E9B22C6843D0068B186 /* NetworkService.m */,
 				E7B3A2EF22C2A40E00DD5724 /* ViewController */,
 				E7B3A2F422C2AEC700DD5724 /* Cell */,
 				E7B3A2F022C2A42800DD5724 /* Data */,
@@ -102,8 +104,6 @@
 			children = (
 				E75AE71922C17CF80039BF91 /* Currency.h */,
 				E75AE71A22C17CF80039BF91 /* Currency.m */,
-				E7B3A2EC22C2006200DD5724 /* Data.h */,
-				E7B3A2ED22C2006200DD5724 /* Data.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -191,8 +191,8 @@
 				E77688BF22BC49E7009495B9 /* main.m in Sources */,
 				E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */,
 				E77688C722BC53FC009495B9 /* MainViewController.m in Sources */,
-				E7B3A2EE22C2006200DD5724 /* Data.m in Sources */,
 				E7B3A2E822C1EF7100DD5724 /* EditViewController.m in Sources */,
+				E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */,
 				E75AE71B22C17CF80039BF91 /* Currency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

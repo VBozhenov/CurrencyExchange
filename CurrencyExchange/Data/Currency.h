@@ -12,14 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Currency : NSObject
 
-@property (nonatomic, strong) NSString *flag;
+@property (nonatomic, strong) NSString *charCode;
+@property (nonatomic, strong) NSNumber *nominal;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) NSNumber *value;
+@property (nonatomic, strong) NSNumber *previous;
 
-- (instancetype)initWithFlag: (NSString*) flag
-                        name: (NSString*) name
-                       value: (NSNumber*) value;
+- (instancetype)initFromDictionary:(NSDictionary*)dictionary;
 
 @end
 

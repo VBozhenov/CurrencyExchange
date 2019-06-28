@@ -58,9 +58,4 @@
     [super setSelected:selected animated:animated];
 }
 
-- (void)setupCellWithCurrency:(Currency*)currency {
-    [self.currencyName setText:currency.fullName];
-    [self.currencyValue setText:[NSString stringWithFormat:@"= %@ ₽ 🇷🇺", [currency.value stringValue]]];
-}
-
 @end

@@ -9,13 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Currency.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface MainViewController : UIViewController
 
 @property (nonatomic, strong) UISegmentedControl *fromSegmentedControl;
 @property (nonatomic, strong) UISegmentedControl *toSegmentedControl;
 
 @end
-
-NS_ASSUME_NONNULL_END
