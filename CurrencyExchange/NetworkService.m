@@ -26,7 +26,6 @@
         NSDictionary *dict = result;
         NSMutableArray *resultObjects = [NSMutableArray new];
         [dict[@"Valute"] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL * _Nonnull stop) {
-            NSLog(@"");
             NSDictionary *rate = @{@"charCode": key,
                                    @"nominal": [obj objectForKey:@"Nominal"],
                                    @"name": [obj objectForKey:@"Name"],

@@ -21,7 +21,7 @@
     
     //Label
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                               100,
+                                                               150,
                                                                [self.view bounds].size.width,
                                                                50)];
     [label setBackgroundColor:[UIColor lightGrayColor]];
@@ -34,7 +34,7 @@
     
     //ImageView
     UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(0,
-                                                                      250,
+                                                                      300,
                                                                       [self.view bounds].size.width,
                                                                       100)];
     [logo setImage:[UIImage imageNamed:@"konverter"]];

@@ -11,7 +11,4 @@
 
 @interface MainViewController : UIViewController
 
-@property (nonatomic, strong) UISegmentedControl *fromSegmentedControl;
-@property (nonatomic, strong) UISegmentedControl *toSegmentedControl;
-
 @end

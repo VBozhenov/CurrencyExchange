@@ -28,10 +28,11 @@
         
         self.currencyName = [[UILabel alloc] initWithFrame:CGRectMake(8,
                                                                       20,
-                                                                      150,
+                                                                      300,
                                                                       20)];
         [self.currencyName setTextAlignment:NSTextAlignmentLeft];
-        [self.currencyName setFont:[UIFont systemFontOfSize:20 weight:UIFontWeightBold]];
+        [self.currencyName setFont:[UIFont systemFontOfSize:15
+                                                     weight:UIFontWeightThin]];
         [self.contentView addSubview:self.currencyName];
         
         self.currencyValue = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.size.width - 80,
@@ -39,7 +40,8 @@
                                                                        150,
                                                                        20)];
         [self.currencyValue setTextAlignment:NSTextAlignmentRight];
-        [self.currencyValue setFont:[UIFont systemFontOfSize:20 weight:UIFontWeightBold]];
+        [self.currencyValue setFont:[UIFont systemFontOfSize:15
+                                                      weight:UIFontWeightBold]];
         [self.contentView addSubview:self.currencyValue];
     }
     
@@ -56,6 +58,11 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
+
+- (void)setupCellWithCurrency:(Currency*)currency {
+    self.currencyName.text = [NSString stringWithFormat:@"%@ %@", currency.nominal, currency.name];
+    self.currencyValue.text = [NSString stringWithFormat:@"%.4f", [currency.value floatValue]];
 }
 
 @end

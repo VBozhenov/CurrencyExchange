@@ -14,7 +14,8 @@
 		E77688BC22BC49E7009495B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77688BA22BC49E7009495B9 /* LaunchScreen.storyboard */; };
 		E77688BF22BC49E7009495B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688BE22BC49E7009495B9 /* main.m */; };
 		E77688C722BC53FC009495B9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688C622BC53FC009495B9 /* MainViewController.m */; };
-		E7B3A2E822C1EF7100DD5724 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2E722C1EF7100DD5724 /* EditViewController.m */; };
+		E7799D2422C7DC0A00D0307E /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7799D2322C7DC0A00D0307E /* DetailedViewController.m */; };
+		E7B3A2E822C1EF7100DD5724 /* RatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2E722C1EF7100DD5724 /* RatesViewController.m */; };
 		E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */; };
 		E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D19E9B22C6843D0068B186 /* NetworkService.m */; };
 /* End PBXBuildFile section */
@@ -33,8 +34,10 @@
 		E77688BE22BC49E7009495B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E77688C522BC53FC009495B9 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E77688C622BC53FC009495B9 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		E7B3A2E622C1EF7100DD5724 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
-		E7B3A2E722C1EF7100DD5724 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		E7799D2222C7DC0A00D0307E /* DetailedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailedViewController.h; sourceTree = "<group>"; };
+		E7799D2322C7DC0A00D0307E /* DetailedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailedViewController.m; sourceTree = "<group>"; };
+		E7B3A2E622C1EF7100DD5724 /* RatesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatesViewController.h; sourceTree = "<group>"; };
+		E7B3A2E722C1EF7100DD5724 /* RatesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatesViewController.m; sourceTree = "<group>"; };
 		E7B3A2F122C2A45800DD5724 /* CurrencyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyTableViewCell.h; sourceTree = "<group>"; };
 		E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyTableViewCell.m; sourceTree = "<group>"; };
 		E7D19E9A22C6843D0068B186 /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
@@ -93,8 +96,10 @@
 				E77688B322BC49E7009495B9 /* StartViewController.m */,
 				E77688C522BC53FC009495B9 /* MainViewController.h */,
 				E77688C622BC53FC009495B9 /* MainViewController.m */,
-				E7B3A2E622C1EF7100DD5724 /* EditViewController.h */,
-				E7B3A2E722C1EF7100DD5724 /* EditViewController.m */,
+				E7B3A2E622C1EF7100DD5724 /* RatesViewController.h */,
+				E7B3A2E722C1EF7100DD5724 /* RatesViewController.m */,
+				E7799D2222C7DC0A00D0307E /* DetailedViewController.h */,
+				E7799D2322C7DC0A00D0307E /* DetailedViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -190,8 +195,9 @@
 				E77688B422BC49E7009495B9 /* StartViewController.m in Sources */,
 				E77688BF22BC49E7009495B9 /* main.m in Sources */,
 				E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */,
+				E7799D2422C7DC0A00D0307E /* DetailedViewController.m in Sources */,
 				E77688C722BC53FC009495B9 /* MainViewController.m in Sources */,
-				E7B3A2E822C1EF7100DD5724 /* EditViewController.m in Sources */,
+				E7B3A2E822C1EF7100DD5724 /* RatesViewController.m in Sources */,
 				E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */,
 				E75AE71B22C17CF80039BF91 /* Currency.m in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  EditViewController.h
+//  RatesViewController.h
 //  CurrencyExchange
 //
 //  Created by Vladimir Bozhenov on 25/06/2019.
@@ -10,10 +10,7 @@
 #import "MainViewController.h"
 #import "Currency.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface EditViewController : UIViewController
+@interface RatesViewController : UIViewController
+@property (nonatomic, strong) NSMutableArray *rates;
 
 @end
-
-NS_ASSUME_NONNULL_END
