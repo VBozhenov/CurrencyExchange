@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
 #import "Currency.h"
-#import "Data.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

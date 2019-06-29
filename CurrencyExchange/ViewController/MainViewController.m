@@ -8,8 +8,13 @@
 
 #import "MainViewController.h"
 #import "EditViewController.h"
+#import "NetworkService.h"
+#import "Currency.h"
 
 @interface MainViewController ()
+
+@property (nonatomic, strong) NSMutableArray *rates;
+
 
 @property (nonatomic, strong) UILabel *resultLabel;
 @property (nonatomic, strong) UILabel *fromCurrencyLabel;
@@ -26,6 +31,13 @@
 
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     self.title = @"Currency Exchange";
+    
+    self.rates = [NSMutableArray new];
+    
+    [[NetworkService sharedInstance] getRates:^(NSArray *rates) {
+        [self.rates addObjectsFromArray:rates];
+        
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

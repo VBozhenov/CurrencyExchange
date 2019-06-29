@@ -8,7 +8,6 @@
 
 #import "StartViewController.h"
 #import "MainViewController.h"
-#import "NetworkService.h"
 
 @interface StartViewController ()
 
@@ -19,11 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-    
-    [[NetworkService sharedInstance] getRates:^(NSArray *rates) {
-        NSLog(@"");
-
-    }];
     
     //Label
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,
