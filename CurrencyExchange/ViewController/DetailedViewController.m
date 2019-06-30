@@ -57,7 +57,7 @@
     
     if (diff > 0) {
         [self.difference setTextColor:[UIColor greenColor]];
-        [self.difference setText:[NSString stringWithFormat:@"⬆︎ %.4f", diff]];
+        [self.difference setText:[NSString stringWithFormat:@"⬆︎ + %.4f", diff]];
     } else if (diff < 0) {
         [self.difference setTextColor:[UIColor redColor]];
         [self.difference setText:[NSString stringWithFormat:@"⬇︎ %.4f", diff]];
