@@ -29,12 +29,13 @@
     self.currencyName = [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                  150,
                                                                  [self.view bounds].size.width,
-                                                                 50)];
+                                                                 150)];
     [self.currencyName setTextColor:[UIColor blueColor]];
     [self.currencyName setText: [NSString stringWithFormat:@"%@ %@", self.currency.nominal, self.currency.name]];
     [self.currencyName setTextAlignment:(NSTextAlignmentCenter)];
     [self.currencyName setFont:[UIFont systemFontOfSize:30
                                                 weight:(UIFontWeightBold)]];
+    [self.currencyName setNumberOfLines:0];
     [self.view addSubview:self.currencyName];
     
     self.currencyRate = [[UILabel alloc] initWithFrame:CGRectMake(0,
@@ -62,7 +63,7 @@
         [self.difference setText:[NSString stringWithFormat:@"⬇︎ %.4f", diff]];
     } else {
         [self.difference setTextColor:[UIColor grayColor]];
-        [self.difference setText:[NSString stringWithFormat:@"⚬ %.4f", diff]];
+        [self.difference setText:[NSString stringWithFormat:@"%.4f", diff]];
 
     }
     
