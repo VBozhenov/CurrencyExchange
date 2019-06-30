@@ -23,7 +23,7 @@
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                   style:UITableViewStylePlain];
-    [self setTitle:@"Value rates"];
+    [self setTitle:@"Currency rates"];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
     
     
