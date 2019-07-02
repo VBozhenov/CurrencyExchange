@@ -8,8 +8,12 @@
 
 #import "MainViewController.h"
 #import "RatesViewController.h"
+#import "MapViewController.h"
 #import "NetworkService.h"
 #import "Currency.h"
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+
 
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDelegate>
 
@@ -65,6 +69,7 @@ double toValue = 1;
         }];
     }];
     
+    //PickerView
     self.fromPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0,
                                                                      250,
                                                                      [self.view bounds].size.width,
@@ -149,6 +154,16 @@ double toValue = 1;
                        forControlEvents:(UIControlEventEditingChanged)];
     [self.view addSubview:self.inputValueTextField];
     
+    //Button
+    UIButton *buttonToMap = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 200,
+                                                                       700,
+                                                                       400,
+                                                                       50)];
+    [buttonToMap setBackgroundColor:[UIColor blueColor]];
+    [buttonToMap setTitle:@"Find nearest exchange office" forState:normal];
+    [buttonToMap addTarget:self action:@selector(toMapViewButtonTaped) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buttonToMap];
+    
     //BarButtonItem
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Rates"
                                                                       style:(UIBarButtonItemStylePlain)
@@ -187,5 +202,56 @@ numberOfRowsInComponent:(NSInteger)component {
         [self updateResults];
     }
 }
+
+- (void) toMapViewButtonTaped {
+    //    [self locationFromAddress:@"Перекресток"];
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];//initialising search request
+    request.naturalLanguageQuery = @"Currency Exchange"; // adding query
+    request.region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(55.7, 37.6), 10000, 10000); //setting region
+    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];//initiate search
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
+     {
+         if (response.mapItems.count == 0)
+             NSLog(@"No Matches");
+         else {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 MapViewController *mapViewController = [[MapViewController alloc] init];
+                 mapViewController.mapItems = response.mapItems;
+                 [self.navigationController pushViewController:mapViewController animated:true];
+             });
+         }
+     }];
+}
+
+
+
+
+//- (void)locationFromAddress:(NSString*)address {
+//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//    [geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+//        if ([placemarks count] > 0) {
+//            for (MKPlacemark *placemark in placemarks) {
+//                NSLog(@"%@", placemark.location);
+//                NSLog(@"%lu", (unsigned long)placemarks.count);
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    MapViewController *mapViewController = [[MapViewController alloc] init];
+//                    mapViewController.coordinate = placemark.location;
+//                    [self.navigationController pushViewController:mapViewController animated:true];
+//                });
+//            }
+//        }
+//    }];
+//}
+
+//- (void)addresFromLoaction:(CLLocation*)location {
+//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+//        if ([placemarks count] > 0) {
+//            for (MKPlacemark *placemark in placemarks) {
+//                NSLog(@"%@", placemark.name);
+//            }
+//        }
+//    }];
+//}
 
 @end
