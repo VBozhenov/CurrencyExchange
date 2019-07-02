@@ -39,8 +39,6 @@
         [self.locationManager stopUpdatingLocation];
         [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdate object:[locations firstObject]];
     }
-    
-    
 }
 
 @end

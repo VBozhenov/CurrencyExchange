@@ -29,11 +29,12 @@
     
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setDelegate:self];
-    
-    self.service = [[LocationService alloc] init];
-    
+    [self.mapView setShowsUserLocation:YES];
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
     
     [self.view addSubview:self.mapView];
+    
+    self.service = [[LocationService alloc] init];
 
     
 }
