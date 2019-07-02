@@ -19,6 +19,7 @@
 		E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */; };
 		E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D19E9B22C6843D0068B186 /* NetworkService.m */; };
 		E7EED80A22CB9F290024D928 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EED80922CB9F290024D928 /* MapViewController.m */; };
+		E7EED80D22CBFC6C0024D928 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EED80C22CBFC6C0024D928 /* LocationService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		E7D19E9B22C6843D0068B186 /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
 		E7EED80822CB9F290024D928 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E7EED80922CB9F290024D928 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		E7EED80B22CBFC6C0024D928 /* LocationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		E7EED80C22CBFC6C0024D928 /* LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +82,7 @@
 			children = (
 				E77688AF22BC49E7009495B9 /* AppDelegate.h */,
 				E77688B022BC49E7009495B9 /* AppDelegate.m */,
-				E7D19E9A22C6843D0068B186 /* NetworkService.h */,
-				E7D19E9B22C6843D0068B186 /* NetworkService.m */,
+				E7EED80E22CBFC740024D928 /* Services */,
 				E7B3A2EF22C2A40E00DD5724 /* ViewController */,
 				E7B3A2F422C2AEC700DD5724 /* Cell */,
 				E7B3A2F022C2A42800DD5724 /* Data */,
@@ -125,6 +127,17 @@
 				E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		E7EED80E22CBFC740024D928 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E7D19E9A22C6843D0068B186 /* NetworkService.h */,
+				E7D19E9B22C6843D0068B186 /* NetworkService.m */,
+				E7EED80B22CBFC6C0024D928 /* LocationService.h */,
+				E7EED80C22CBFC6C0024D928 /* LocationService.m */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7EED80D22CBFC6C0024D928 /* LocationService.m in Sources */,
 				E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */,
 				E77688B422BC49E7009495B9 /* StartViewController.m in Sources */,
 				E77688BF22BC49E7009495B9 /* main.m in Sources */,

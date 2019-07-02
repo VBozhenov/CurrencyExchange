@@ -8,10 +8,15 @@
 
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
+#import "LocationService.h"
+
 
 @interface MapViewController () <MKMapViewDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) LocationService *service;
+@property (nonatomic, strong) CLLocation *location;
+
 
 @end
 
@@ -25,18 +30,32 @@
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setDelegate:self];
     
-    for (MKMapItem *item in self.mapItems) {
-        [self setAnotation: item];
-    }
+    self.service = [[LocationService alloc] init];
+    
+    
     [self.view addSubview:self.mapView];
 
     
 }
 
-- (void) setAnotation:(MKMapItem*) mapItem {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(55.7, 37.6);
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000);
+- (void)viewWillAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationWasUpdate:) name:kLocationUpdate object:nil];
+}
+
+- (void)locationWasUpdate:(NSNotification*)notification {
+    self.location = notification.object;
     
+    for (MKMapItem *item in self.mapItems) {
+        [self setAnotation: item
+                  location:self.location];
+    }
+    
+}
+
+- (void) setAnotation:(MKMapItem*) mapItem location:(CLLocation*) location {
+    CLLocationCoordinate2D coordinate = location.coordinate;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000);
+
     [self.mapView setRegion:region];
     
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];

@@ -13,6 +13,7 @@
 #import "Currency.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "LocationService.h"
 
 
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDelegate>
@@ -26,6 +27,10 @@
 
 @property (nonatomic, strong) UILabel *resultLabel;
 @property (nonatomic, strong) UITextField *inputValueTextField;
+
+@property (nonatomic, strong) CLLocation *loc;
+@property (nonatomic, strong) LocationService *service;
+
 
 @end
 
@@ -41,6 +46,12 @@ double toValue = 1;
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     [self setTitle:@"Currency Exchange"];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
+    
+    self.loc = [[CLLocation alloc] init];
+    self.service = [[LocationService alloc] init];
+
+    
+    
     
     Currency *rub = [Currency new];
     rub.charCode = @"RUB";
@@ -71,7 +82,7 @@ double toValue = 1;
     
     //PickerView
     self.fromPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0,
-                                                                     250,
+                                                                     230,
                                                                      [self.view bounds].size.width,
                                                                      150)];
     self.fromPicker.delegate = self;
@@ -79,7 +90,7 @@ double toValue = 1;
     [self.view addSubview:self.fromPicker];
     
     self.toPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0,
-                                                                   500,
+                                                                   480,
                                                                    [self.view bounds].size.width,
                                                                    150)];
     self.toPicker.delegate = self;
@@ -106,9 +117,14 @@ double toValue = 1;
     [self.resultLabel removeFromSuperview];
     [self.inputValueTextField removeFromSuperview];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(locationWasUpdate:)
+                                                 name:kLocationUpdate
+                                               object:nil];
+    
     //Labels
     UILabel *labelFrom = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                   150,
+                                                                   130,
                                                                    [self.view bounds].size.width,
                                                                    50)];
     [labelFrom setTextColor:[UIColor blueColor]];
@@ -119,7 +135,7 @@ double toValue = 1;
     [self.view addSubview:labelFrom];
     
     UILabel *labelTo = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                 400,
+                                                                 380,
                                                                  [self.view bounds].size.width,
                                                                  50)];
     [labelTo setTextColor:[UIColor blueColor]];
@@ -130,7 +146,7 @@ double toValue = 1;
     [self.view addSubview:labelTo];
     
     self.resultLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                 450,
+                                                                 430,
                                                                  [self.view bounds].size.width,
                                                                  50)];
     [self.resultLabel setTextColor:[UIColor blueColor]];
@@ -142,7 +158,7 @@ double toValue = 1;
     
     //TextField
     self.inputValueTextField = [[UITextField alloc] initWithFrame:CGRectMake(150,
-                                                                             200,
+                                                                             180,
                                                                              [self.view bounds].size.width - 300,
                                                                              50)];
     self.inputValueTextField.delegate = self;
@@ -156,7 +172,7 @@ double toValue = 1;
     
     //Button
     UIButton *buttonToMap = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 200,
-                                                                       700,
+                                                                       680,
                                                                        400,
                                                                        50)];
     [buttonToMap setBackgroundColor:[UIColor blueColor]];
@@ -204,11 +220,10 @@ numberOfRowsInComponent:(NSInteger)component {
 }
 
 - (void) toMapViewButtonTaped {
-    //    [self locationFromAddress:@"Перекресток"];
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];//initialising search request
-    request.naturalLanguageQuery = @"Currency Exchange"; // adding query
-    request.region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(55.7, 37.6), 10000, 10000); //setting region
-    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];//initiate search
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Currency Exchange";
+    request.region = MKCoordinateRegionMakeWithDistance([self.loc coordinate], 10000, 10000);
+    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
      {
          if (response.mapItems.count == 0)
@@ -223,35 +238,8 @@ numberOfRowsInComponent:(NSInteger)component {
      }];
 }
 
-
-
-
-//- (void)locationFromAddress:(NSString*)address {
-//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-//    [geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-//        if ([placemarks count] > 0) {
-//            for (MKPlacemark *placemark in placemarks) {
-//                NSLog(@"%@", placemark.location);
-//                NSLog(@"%lu", (unsigned long)placemarks.count);
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    MapViewController *mapViewController = [[MapViewController alloc] init];
-//                    mapViewController.coordinate = placemark.location;
-//                    [self.navigationController pushViewController:mapViewController animated:true];
-//                });
-//            }
-//        }
-//    }];
-//}
-
-//- (void)addresFromLoaction:(CLLocation*)location {
-//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-//        if ([placemarks count] > 0) {
-//            for (MKPlacemark *placemark in placemarks) {
-//                NSLog(@"%@", placemark.name);
-//            }
-//        }
-//    }];
-//}
+- (void)locationWasUpdate:(NSNotification*)notification {
+    self.loc = notification.object;
+}
 
 @end
