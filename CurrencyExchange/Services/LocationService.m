@@ -37,7 +37,8 @@
     if (self.currentLocation == nil) {
         self.currentLocation = [locations firstObject];
         [self.locationManager stopUpdatingLocation];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdate object:[locations firstObject]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdate
+                                                            object:[locations firstObject]];
     }
 }
 

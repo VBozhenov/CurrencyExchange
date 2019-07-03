@@ -38,7 +38,9 @@
     self.service = [[LocationService alloc] init];
     self.location = [[CLLocation alloc] init];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationWasUpdate:) name:kLocationUpdate object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(locationWasUpdate:)
+                                                 name:kLocationUpdate object:nil];
     
 }
 - (void)locationWasUpdate:(NSNotification*)notification {
@@ -46,9 +48,12 @@
     
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = @"Currency Exchange";
-    request.region = MKCoordinateRegionMakeWithDistance([self.location coordinate], 100000, 100000);
+    request.region = MKCoordinateRegionMakeWithDistance([self.location coordinate],
+                                                        100000,
+                                                        100000);
     MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response,
+                                         NSError *error)
      {
          if (response.mapItems.count == 0)
              NSLog(@"No Matches");
@@ -63,7 +68,9 @@
 
 - (void) setAnotation:(MKMapItem*) mapItem location:(CLLocation*) location {
     CLLocationCoordinate2D coordinate = location.coordinate;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 100000, 100000);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate,
+                                                                   100000,
+                                                                   100000);
 
     [self.mapView setRegion:region];
     
@@ -81,7 +88,8 @@
     MKMarkerAnnotationView *marker = (MKMarkerAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
     
     if (!marker) {
-        marker = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        marker = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation
+                                                    reuseIdentifier:identifier];
         marker.canShowCallout = true;
         marker.calloutOffset = CGPointMake(-5, 5);
         marker.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];

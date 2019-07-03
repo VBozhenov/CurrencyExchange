@@ -47,10 +47,6 @@
     return 1;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    return section == 0 ? @"My Currencies" : @"Available Currencies";
-//}
-//
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.rates.count;
 }
@@ -67,7 +63,8 @@
     Currency *currency = [self.rates objectAtIndex:indexPath.row];
     DetailedViewController *detailedViewController = [[DetailedViewController alloc] init];
     detailedViewController.currency = currency;
-    [self.navigationController pushViewController:detailedViewController animated:true];
+    [self.navigationController pushViewController:detailedViewController
+                                         animated:true];
 }
 
 @end

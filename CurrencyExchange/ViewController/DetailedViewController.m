@@ -23,7 +23,8 @@
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     
-    [self setTitle:[NSString stringWithFormat:@"%@", self.currency.charCode]];
+    [self setTitle:[NSString stringWithFormat:@"%@",
+                    self.currency.charCode]];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
     
     self.currencyName = [[UILabel alloc] initWithFrame:CGRectMake(0,
@@ -31,7 +32,9 @@
                                                                  [self.view bounds].size.width,
                                                                  150)];
     [self.currencyName setTextColor:[UIColor blueColor]];
-    [self.currencyName setText: [NSString stringWithFormat:@"%@ %@", self.currency.nominal, self.currency.name]];
+    [self.currencyName setText: [NSString stringWithFormat:@"%@ %@",
+                                 self.currency.nominal,
+                                 self.currency.name]];
     [self.currencyName setTextAlignment:(NSTextAlignmentCenter)];
     [self.currencyName setFont:[UIFont systemFontOfSize:30
                                                 weight:(UIFontWeightBold)]];
@@ -43,7 +46,9 @@
                                                                  [self.view bounds].size.width,
                                                                  50)];
     [self.currencyRate setTextColor:[UIColor blueColor]];
-    [self.currencyRate setText:[NSString stringWithFormat:@"%.4f %@", [self.currency.value floatValue], @"руб"]];
+    [self.currencyRate setText:[NSString stringWithFormat:@"%.4f %@",
+                                [self.currency.value floatValue],
+                                @"руб"]];
     [self.currencyRate setTextAlignment:(NSTextAlignmentCenter)];
     [self.currencyRate setFont:[UIFont systemFontOfSize:30
                                                 weight:(UIFontWeightBold)]];
@@ -57,13 +62,16 @@
     
     if (diff > 0) {
         [self.difference setTextColor:[UIColor greenColor]];
-        [self.difference setText:[NSString stringWithFormat:@"⬆︎ + %.4f", diff]];
+        [self.difference setText:[NSString stringWithFormat:@"⬆︎ + %.4f",
+                                  diff]];
     } else if (diff < 0) {
         [self.difference setTextColor:[UIColor redColor]];
-        [self.difference setText:[NSString stringWithFormat:@"⬇︎ %.4f", diff]];
+        [self.difference setText:[NSString stringWithFormat:@"⬇︎ %.4f",
+                                  diff]];
     } else {
         [self.difference setTextColor:[UIColor grayColor]];
-        [self.difference setText:[NSString stringWithFormat:@"%.4f", diff]];
+        [self.difference setText:[NSString stringWithFormat:@"%.4f",
+                                  diff]];
 
     }
     

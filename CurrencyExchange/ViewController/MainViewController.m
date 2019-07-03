@@ -55,7 +55,9 @@ double toValue = 1;
     [[NetworkService sharedInstance] getRates:^(NSArray *rates) {
         
         [self.rates addObjectsFromArray:rates];
-        [rates enumerateObjectsUsingBlock:^(Currency* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [rates enumerateObjectsUsingBlock:^(Currency* obj,
+                                            NSUInteger idx,
+                                            BOOL * _Nonnull stop) {
             [self.names addObject:obj.name];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.fromPicker reloadAllComponents];
@@ -88,7 +90,8 @@ double toValue = 1;
 - (void) updateResults {
     float ratio = toValue / fromValue ;
     float input = [[self.inputValueTextField text] floatValue];
-    [self.resultLabel setText:[NSString stringWithFormat:@"%.2f", input / ratio]];
+    [self.resultLabel setText:[NSString stringWithFormat:@"%.2f",
+                               input / ratio]];
     
 }
 
@@ -158,7 +161,9 @@ double toValue = 1;
                                                                        50)];
     [buttonToMap setBackgroundColor:[UIColor blueColor]];
     [buttonToMap setTitle:@"Find nearest exchange office" forState:normal];
-    [buttonToMap addTarget:self action:@selector(toMapViewButtonTaped) forControlEvents:UIControlEventTouchUpInside];
+    [buttonToMap addTarget:self
+                    action:@selector(toMapViewButtonTaped)
+          forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonToMap];
     
     //BarButtonItem
@@ -172,20 +177,19 @@ double toValue = 1;
 - (void) barButtonTaped {
     RatesViewController *ratesViewController = [[RatesViewController alloc] init];
     ratesViewController.rates = self.rates;
-    [self.navigationController pushViewController:ratesViewController animated:true];
+    [self.navigationController pushViewController:ratesViewController
+                                         animated:true];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)thePickerView
-numberOfRowsInComponent:(NSInteger)component {
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
     return self.names.count;
 }
 
-- (NSString *)pickerView:(UIPickerView *)thePickerView
-             titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return self.names[row];
 }
 
@@ -204,7 +208,8 @@ numberOfRowsInComponent:(NSInteger)component {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         MapViewController *mapViewController = [[MapViewController alloc] init];
-        [self.navigationController pushViewController:mapViewController animated:true];
+        [self.navigationController pushViewController:mapViewController
+                                             animated:true];
     });
 }
 
