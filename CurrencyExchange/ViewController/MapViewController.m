@@ -10,7 +10,6 @@
 #import <MapKit/MapKit.h>
 #import "LocationService.h"
 
-
 @interface MapViewController () <MKMapViewDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
