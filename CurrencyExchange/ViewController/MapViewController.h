@@ -12,6 +12,4 @@
 
 @interface MapViewController : UIViewController
 
-@property (nonatomic,strong) NSArray<MKMapItem*> *mapItems;
-
 @end

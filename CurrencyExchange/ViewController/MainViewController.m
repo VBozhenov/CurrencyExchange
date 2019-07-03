@@ -11,10 +11,6 @@
 #import "MapViewController.h"
 #import "NetworkService.h"
 #import "Currency.h"
-#import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
-#import "LocationService.h"
-
 
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDelegate>
 
@@ -27,10 +23,6 @@
 
 @property (nonatomic, strong) UILabel *resultLabel;
 @property (nonatomic, strong) UITextField *inputValueTextField;
-
-@property (nonatomic, strong) CLLocation *loc;
-@property (nonatomic, strong) LocationService *service;
-
 
 @end
 
@@ -46,12 +38,6 @@ double toValue = 1;
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     [self setTitle:@"Currency Exchange"];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
-    
-    self.loc = [[CLLocation alloc] init];
-    self.service = [[LocationService alloc] init];
-
-    
-    
     
     Currency *rub = [Currency new];
     rub.charCode = @"RUB";
@@ -116,11 +102,6 @@ double toValue = 1;
     
     [self.resultLabel removeFromSuperview];
     [self.inputValueTextField removeFromSuperview];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(locationWasUpdate:)
-                                                 name:kLocationUpdate
-                                               object:nil];
     
     //Labels
     UILabel *labelFrom = [[UILabel alloc] initWithFrame:CGRectMake(0,
@@ -220,26 +201,11 @@ numberOfRowsInComponent:(NSInteger)component {
 }
 
 - (void) toMapViewButtonTaped {
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = @"Currency Exchange";
-    request.region = MKCoordinateRegionMakeWithDistance([self.loc coordinate], 10000, 10000);
-    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
-     {
-         if (response.mapItems.count == 0)
-             NSLog(@"No Matches");
-         else {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 MapViewController *mapViewController = [[MapViewController alloc] init];
-                 mapViewController.mapItems = response.mapItems;
-                 [self.navigationController pushViewController:mapViewController animated:true];
-             });
-         }
-     }];
-}
-
-- (void)locationWasUpdate:(NSNotification*)notification {
-    self.loc = notification.object;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MapViewController *mapViewController = [[MapViewController alloc] init];
+        [self.navigationController pushViewController:mapViewController animated:true];
+    });
 }
 
 @end

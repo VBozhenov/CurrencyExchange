@@ -17,7 +17,6 @@
 @property (nonatomic, strong) LocationService *service;
 @property (nonatomic, strong) CLLocation *location;
 
-
 @end
 
 @implementation MapViewController
@@ -26,6 +25,8 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self setTitle:@"Currency Exchange"];
+    [self.navigationController.navigationBar setPrefersLargeTitles:true];
     
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     [self.mapView setDelegate:self];
@@ -35,27 +36,34 @@
     [self.view addSubview:self.mapView];
     
     self.service = [[LocationService alloc] init];
-
+    self.location = [[CLLocation alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationWasUpdate:) name:kLocationUpdate object:nil];
     
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationWasUpdate:) name:kLocationUpdate object:nil];
-}
-
 - (void)locationWasUpdate:(NSNotification*)notification {
     self.location = notification.object;
     
-    for (MKMapItem *item in self.mapItems) {
-        [self setAnotation: item
-                  location:self.location];
-    }
-    
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"Currency Exchange";
+    request.region = MKCoordinateRegionMakeWithDistance([self.location coordinate], 100000, 100000);
+    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error)
+     {
+         if (response.mapItems.count == 0)
+             NSLog(@"No Matches");
+         else {
+             for (MKMapItem *item in response.mapItems) {
+                 [self setAnotation: item
+                           location: notification.object];
+             }
+         }
+     }];
 }
 
 - (void) setAnotation:(MKMapItem*) mapItem location:(CLLocation*) location {
     CLLocationCoordinate2D coordinate = location.coordinate;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 100000, 100000);
 
     [self.mapView setRegion:region];
     
