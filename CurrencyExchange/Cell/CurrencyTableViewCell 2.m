@@ -21,10 +21,8 @@
     [super awakeFromNib];
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style
-              reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style
-                reuseIdentifier:reuseIdentifier];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
         
@@ -59,16 +57,12 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected
-              animated:animated];
+    [super setSelected:selected animated:animated];
 }
 
 - (void)setupCellWithCurrency:(Currency*)currency {
-    self.currencyName.text = [NSString stringWithFormat:@"%@ %@",
-                              currency.nominal,
-                              currency.name];
-    self.currencyValue.text = [NSString stringWithFormat:@"%.4f",
-                               [currency.value floatValue]];
+    self.currencyName.text = [NSString stringWithFormat:@"%@ %@", currency.nominal, currency.name];
+    self.currencyValue.text = [NSString stringWithFormat:@"%.4f", [currency.value floatValue]];
 }
 
 @end

@@ -25,7 +25,9 @@
     [self load:MAIN_URL withCompletion:^(id  _Nullable result) {
         NSDictionary *dict = result;
         NSMutableArray *resultObjects = [NSMutableArray new];
-        [dict[@"Valute"] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL * _Nonnull stop) {
+        [dict[@"Valute"] enumerateKeysAndObjectsUsingBlock:^(NSString *key,
+                                                             NSDictionary *obj,
+                                                             BOOL * _Nonnull stop) {
             NSDictionary *rate = @{@"charCode": key,
                                    @"nominal": [obj objectForKey:@"Nominal"],
                                    @"name": [obj objectForKey:@"Name"],

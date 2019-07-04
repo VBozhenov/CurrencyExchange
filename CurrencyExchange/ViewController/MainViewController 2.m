@@ -8,7 +8,6 @@
 
 #import "MainViewController.h"
 #import "RatesViewController.h"
-#import "MapViewController.h"
 #import "NetworkService.h"
 #import "Currency.h"
 
@@ -55,9 +54,7 @@ double toValue = 1;
     [[NetworkService sharedInstance] getRates:^(NSArray *rates) {
         
         [self.rates addObjectsFromArray:rates];
-        [rates enumerateObjectsUsingBlock:^(Currency* obj,
-                                            NSUInteger idx,
-                                            BOOL * _Nonnull stop) {
+        [rates enumerateObjectsUsingBlock:^(Currency* obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [self.names addObject:obj.name];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.fromPicker reloadAllComponents];
@@ -68,9 +65,8 @@ double toValue = 1;
         }];
     }];
     
-    //PickerView
     self.fromPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0,
-                                                                     230,
+                                                                     250,
                                                                      [self.view bounds].size.width,
                                                                      150)];
     self.fromPicker.delegate = self;
@@ -78,7 +74,7 @@ double toValue = 1;
     [self.view addSubview:self.fromPicker];
     
     self.toPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0,
-                                                                   480,
+                                                                   500,
                                                                    [self.view bounds].size.width,
                                                                    150)];
     self.toPicker.delegate = self;
@@ -90,8 +86,7 @@ double toValue = 1;
 - (void) updateResults {
     float ratio = toValue / fromValue ;
     float input = [[self.inputValueTextField text] floatValue];
-    [self.resultLabel setText:[NSString stringWithFormat:@"%.2f",
-                               input / ratio]];
+    [self.resultLabel setText:[NSString stringWithFormat:@"%.2f", input / ratio]];
     
 }
 
@@ -102,14 +97,13 @@ double toValue = 1;
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:true];
     
     [self.resultLabel removeFromSuperview];
     [self.inputValueTextField removeFromSuperview];
     
     //Labels
     UILabel *labelFrom = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                   130,
+                                                                   150,
                                                                    [self.view bounds].size.width,
                                                                    50)];
     [labelFrom setTextColor:[UIColor blueColor]];
@@ -120,7 +114,7 @@ double toValue = 1;
     [self.view addSubview:labelFrom];
     
     UILabel *labelTo = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                 380,
+                                                                 400,
                                                                  [self.view bounds].size.width,
                                                                  50)];
     [labelTo setTextColor:[UIColor blueColor]];
@@ -131,7 +125,7 @@ double toValue = 1;
     [self.view addSubview:labelTo];
     
     self.resultLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                 430,
+                                                                 450,
                                                                  [self.view bounds].size.width,
                                                                  50)];
     [self.resultLabel setTextColor:[UIColor blueColor]];
@@ -143,7 +137,7 @@ double toValue = 1;
     
     //TextField
     self.inputValueTextField = [[UITextField alloc] initWithFrame:CGRectMake(150,
-                                                                             180,
+                                                                             200,
                                                                              [self.view bounds].size.width - 300,
                                                                              50)];
     self.inputValueTextField.delegate = self;
@@ -154,18 +148,6 @@ double toValue = 1;
     [self.inputValueTextField addTarget:self action:@selector(updateResults)
                        forControlEvents:(UIControlEventEditingChanged)];
     [self.view addSubview:self.inputValueTextField];
-    
-    //Button
-    UIButton *buttonToMap = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 200,
-                                                                       680,
-                                                                       400,
-                                                                       50)];
-    [buttonToMap setBackgroundColor:[UIColor blueColor]];
-    [buttonToMap setTitle:@"Find nearest exchange office" forState:normal];
-    [buttonToMap addTarget:self
-                    action:@selector(toMapViewButtonTaped)
-          forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buttonToMap];
     
     //BarButtonItem
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Rates"
@@ -178,40 +160,32 @@ double toValue = 1;
 - (void) barButtonTaped {
     RatesViewController *ratesViewController = [[RatesViewController alloc] init];
     ratesViewController.rates = self.rates;
-    [self.navigationController pushViewController:ratesViewController
-                                         animated:true];
+    [self.navigationController pushViewController:ratesViewController animated:true];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+- (NSInteger)pickerView:(UIPickerView *)thePickerView
+numberOfRowsInComponent:(NSInteger)component {
     return self.names.count;
 }
 
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSString *)pickerView:(UIPickerView *)thePickerView
+             titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     return self.names[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
     if (pickerView == self.fromPicker) {
-        fromValue = [[self.rates[row] valueForKey:@"value"] doubleValue] / [[self.rates[row] valueForKey:@"nominal"] doubleValue];
+        fromValue = [[self.rates[row] valueForKey:@"value"] doubleValue] * [[self.rates[row] valueForKey:@"nominal"] doubleValue];
         [self updateResults];
     } else {
-        toValue = [[self.rates[row] valueForKey:@"value"] doubleValue] / [[self.rates[row] valueForKey:@"nominal"] doubleValue];
+        toValue = [[self.rates[row] valueForKey:@"value"] doubleValue] * [[self.rates[row] valueForKey:@"nominal"] doubleValue];
         [self updateResults];
     }
-}
-
-- (void) toMapViewButtonTaped {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        MapViewController *mapViewController = [[MapViewController alloc] init];
-        [self.navigationController pushViewController:mapViewController
-                                             animated:true];
-    });
 }
 
 @end
