@@ -102,6 +102,7 @@ double toValue = 1;
 
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:true];
     
     [self.resultLabel removeFromSuperview];
     [self.inputValueTextField removeFromSuperview];
