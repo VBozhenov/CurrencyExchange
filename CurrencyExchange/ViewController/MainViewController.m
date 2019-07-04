@@ -197,10 +197,10 @@ double toValue = 1;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
     if (pickerView == self.fromPicker) {
-        fromValue = [[self.rates[row] valueForKey:@"value"] doubleValue] * [[self.rates[row] valueForKey:@"nominal"] doubleValue];
+        fromValue = [[self.rates[row] valueForKey:@"value"] doubleValue] / [[self.rates[row] valueForKey:@"nominal"] doubleValue];
         [self updateResults];
     } else {
-        toValue = [[self.rates[row] valueForKey:@"value"] doubleValue] * [[self.rates[row] valueForKey:@"nominal"] doubleValue];
+        toValue = [[self.rates[row] valueForKey:@"value"] doubleValue] / [[self.rates[row] valueForKey:@"nominal"] doubleValue];
         [self updateResults];
     }
 }
