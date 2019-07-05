@@ -23,8 +23,8 @@
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                   style:UITableViewStylePlain];
-    [self setTitle:@"Currency rates"];
-    [self.navigationController.navigationBar setPrefersLargeTitles:true];
+//    [self setTitle:@"Currency rates"];
+//    [self.navigationController.navigationBar setPrefersLargeTitles:true];
     
     
     self.tableView.rowHeight = 60;

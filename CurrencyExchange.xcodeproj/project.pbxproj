@@ -15,6 +15,7 @@
 		E77688BF22BC49E7009495B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688BE22BC49E7009495B9 /* main.m */; };
 		E77688C722BC53FC009495B9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688C622BC53FC009495B9 /* MainViewController.m */; };
 		E7799D2422C7DC0A00D0307E /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7799D2322C7DC0A00D0307E /* DetailedViewController.m */; };
+		E7901FFC22CF4EFF00E141CA /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7901FFB22CF4EFF00E141CA /* TabBar.m */; };
 		E7B3A2E822C1EF7100DD5724 /* RatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2E722C1EF7100DD5724 /* RatesViewController.m */; };
 		E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */; };
 		E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D19E9B22C6843D0068B186 /* NetworkService.m */; };
@@ -38,6 +39,8 @@
 		E77688C622BC53FC009495B9 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E7799D2222C7DC0A00D0307E /* DetailedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailedViewController.h; sourceTree = "<group>"; };
 		E7799D2322C7DC0A00D0307E /* DetailedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailedViewController.m; sourceTree = "<group>"; };
+		E7901FFA22CF4EFF00E141CA /* TabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
+		E7901FFB22CF4EFF00E141CA /* TabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
 		E7B3A2E622C1EF7100DD5724 /* RatesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatesViewController.h; sourceTree = "<group>"; };
 		E7B3A2E722C1EF7100DD5724 /* RatesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatesViewController.m; sourceTree = "<group>"; };
 		E7B3A2F122C2A45800DD5724 /* CurrencyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyTableViewCell.h; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				E7799D2322C7DC0A00D0307E /* DetailedViewController.m */,
 				E7EED80822CB9F290024D928 /* MapViewController.h */,
 				E7EED80922CB9F290024D928 /* MapViewController.m */,
+				E7901FFA22CF4EFF00E141CA /* TabBar.h */,
+				E7901FFB22CF4EFF00E141CA /* TabBar.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				E7EED80D22CBFC6C0024D928 /* LocationService.m in Sources */,
 				E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */,
 				E77688B422BC49E7009495B9 /* StartViewController.m in Sources */,
+				E7901FFC22CF4EFF00E141CA /* TabBar.m in Sources */,
 				E77688BF22BC49E7009495B9 /* main.m in Sources */,
 				E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */,
 				E7799D2422C7DC0A00D0307E /* DetailedViewController.m in Sources */,
