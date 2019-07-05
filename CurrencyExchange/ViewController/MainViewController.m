@@ -37,8 +37,6 @@ double toValue = 1;
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-//    [self setTitle:@"Currency Exchange"];
-//    [self.navigationController.navigationBar setPrefersLargeTitles:true];
     
     Currency *rub = [Currency new];
     rub.charCode = @"RUB";

@@ -10,9 +10,11 @@
 #import "CurrencyTableViewCell.h"
 #import "DetailedViewController.h"
 
-@interface RatesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface RatesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) NSArray *searchRates;
 
 @end
 
@@ -21,11 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.dimsBackgroundDuringPresentation = false;
+    [self.searchController setSearchResultsUpdater:self];
+    self.searchController.definesPresentationContext = YES;
+    [self.navigationItem setSearchController:self.searchController];
+    
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                   style:UITableViewStylePlain];
-//    [self setTitle:@"Currency rates"];
-//    [self.navigationController.navigationBar setPrefersLargeTitles:true];
-    
     
     self.tableView.rowHeight = 60;
     
@@ -41,6 +46,16 @@
     
 }
 
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    if (searchController.searchBar.text) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[cd]%@ OR SELF.charCode CONTAINS[cd]%@",
+                                  searchController.searchBar.text,
+                                  searchController.searchBar.text];
+        self.searchRates = [self.rates filteredArrayUsingPredicate:predicate];
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - UITableViewDataSource -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -48,19 +63,35 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.searchController.isActive && [self.searchRates count] > 0) {
+        return self.searchRates.count;
+    }
+    
     return self.rates.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CurrencyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyTableViewCell"];
-    [cell setupCellWithCurrency:self.rates[indexPath.row]];
+    
+    if (self.searchController.isActive && [self.searchRates count] > 0) {
+        [cell setupCellWithCurrency:self.searchRates[indexPath.row]];
+    } else {
+        [cell setupCellWithCurrency:self.rates[indexPath.row]];
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Currency *currency = [self.rates objectAtIndex:indexPath.row];
+    Currency *currency = [[Currency alloc]init];
+    
+    if (self.searchController.isActive && [self.searchRates count] > 0) {
+        currency = [self.searchRates objectAtIndex:indexPath.row];
+    } else {
+        currency = [self.rates objectAtIndex:indexPath.row];
+    }
+    
     DetailedViewController *detailedViewController = [[DetailedViewController alloc] init];
     detailedViewController.currency = currency;
     [self.navigationController pushViewController:detailedViewController
