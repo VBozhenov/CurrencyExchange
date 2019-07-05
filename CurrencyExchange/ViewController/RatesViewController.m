@@ -26,7 +26,6 @@
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.dimsBackgroundDuringPresentation = false;
     [self.searchController setSearchResultsUpdater:self];
-    self.searchController.definesPresentationContext = YES;
     [self.navigationItem setSearchController:self.searchController];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
@@ -44,6 +43,12 @@
     
     [self.view addSubview:self.tableView];
     
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Greetings!"
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(barButtonTaped)];
+    barButtonItem.image = [UIImage imageNamed:@"collection"];
+    self.navigationItem.rightBarButtonItem = barButtonItem;    
 }
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
@@ -97,5 +102,7 @@
     [self.navigationController pushViewController:detailedViewController
                                          animated:true];
 }
+
+-(void)barButtonTaped{}
 
 @end

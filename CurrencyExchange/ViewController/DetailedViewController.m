@@ -23,6 +23,12 @@
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     
+    
+//    UITapGestureRecognizer *recognizer =
+//    [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                            action:@selector(handleTap:)];
+//    [self.view addGestureRecognizer:recognizer];
+
     [self setTitle:[NSString stringWithFormat:@"%@",
                     self.currency.charCode]];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
@@ -82,5 +88,10 @@
     [self.view addSubview:self.difference];
     
 }
+
+//- (void)handleTap:(UITapGestureRecognizer *)recognizer {
+//    [self.navigationController popViewControllerAnimated:YES];
+//
+//}
 
 @end
