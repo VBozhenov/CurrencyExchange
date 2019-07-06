@@ -9,6 +9,7 @@
 #import "RatesViewController.h"
 #import "CurrencyTableViewCell.h"
 #import "DetailedViewController.h"
+#import "RatesCollectionViewController.h"
 
 @interface RatesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
 
@@ -61,7 +62,6 @@
     }
 }
 
-#pragma mark - UITableViewDataSource -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -90,19 +90,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Currency *currency = [[Currency alloc]init];
-    
+
     if (self.searchController.isActive && [self.searchRates count] > 0) {
         currency = [self.searchRates objectAtIndex:indexPath.row];
     } else {
         currency = [self.rates objectAtIndex:indexPath.row];
     }
-    
+
     DetailedViewController *detailedViewController = [[DetailedViewController alloc] init];
     detailedViewController.currency = currency;
     [self.navigationController pushViewController:detailedViewController
                                          animated:true];
 }
 
--(void)barButtonTaped{}
-
+-(void)barButtonTaped {
+    RatesCollectionViewController *ratesCollectionViewController = [[RatesCollectionViewController alloc] init];
+    ratesCollectionViewController.rates = self.rates;
+    [self.navigationController pushViewController:ratesCollectionViewController
+                                         animated:true];
+}
 @end
