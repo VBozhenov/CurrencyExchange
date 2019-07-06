@@ -170,6 +170,7 @@ double toValue = 1;
 
 
 - (void) buttonToRatesTaped {
+    
     RatesViewController *ratesViewController = [[RatesViewController alloc] init];
     ratesViewController.rates = self.rates;
     [self.navigationController pushViewController:ratesViewController

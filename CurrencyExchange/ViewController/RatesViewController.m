@@ -99,11 +99,13 @@
 
     DetailedViewController *detailedViewController = [[DetailedViewController alloc] init];
     detailedViewController.currency = currency;
+    [self.searchController setActive:false];
     [self.navigationController pushViewController:detailedViewController
                                          animated:true];
 }
 
 -(void)barButtonTaped {
+   
     RatesCollectionViewController *ratesCollectionViewController = [[RatesCollectionViewController alloc] init];
     ratesCollectionViewController.rates = self.rates;
     [self.navigationController pushViewController:ratesCollectionViewController
