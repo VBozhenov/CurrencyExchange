@@ -13,7 +13,7 @@
 #import "TabBar.h"
 #import "Currency.h"
 
-@interface MainViewController () <UIPickerViewDelegate, UIPickerViewDelegate>
+@interface MainViewController () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableArray *rates;
 @property (nonatomic, strong) NSMutableArray *names;
@@ -37,6 +37,9 @@ double toValue = 1;
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
+//    [self setTitle:@"Currency Exchange"];
+//    [self.navigationController.navigationBar setPrefersLargeTitles:true];
+
     
     Currency *rub = [Currency new];
     rub.charCode = @"RUB";

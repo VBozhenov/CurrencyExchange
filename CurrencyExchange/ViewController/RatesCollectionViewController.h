@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RatesCollectionViewController : UICollectionViewController
+@interface RatesCollectionViewController : UIViewController
 @property (nonatomic, strong) NSMutableArray *rates;
 
 

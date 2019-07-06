@@ -24,6 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setTitle:@"Currency rates"];
+    [self.navigationController.navigationBar setPrefersLargeTitles:true];
+
+    
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.dimsBackgroundDuringPresentation = false;
     [self.searchController setSearchResultsUpdater:self];

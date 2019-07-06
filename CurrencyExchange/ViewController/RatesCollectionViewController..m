@@ -22,12 +22,10 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.minimumLineSpacing = 0.1;
-    layout.minimumInteritemSpacing = 0.1;
-    layout.itemSize = CGSizeMake(100,
-                                 100);
-//    layout.itemSize = CGSizeMake([self.view bounds].size.width / 2,
-//                                 [self.view bounds].size.height / 4);
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    layout.itemSize = CGSizeMake([self.view bounds].size.width / 2,
+                                 [self.view bounds].size.height / 4);
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds
