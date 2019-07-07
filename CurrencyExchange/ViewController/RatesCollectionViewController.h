@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "Currency.h"
 
 @interface RatesCollectionViewController : UIViewController
-@property (nonatomic, strong) NSMutableArray *rates;
 
+@property (nonatomic, strong) NSMutableArray<Currency*> *rates;
 
 @end
-
-NS_ASSUME_NONNULL_END

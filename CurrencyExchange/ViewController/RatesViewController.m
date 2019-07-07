@@ -48,7 +48,7 @@
     
     [self.view addSubview:self.tableView];
     
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Greetings!"
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"!"
                                                                       style:UIBarButtonItemStylePlain
                                                                      target:self
                                                                      action:@selector(barButtonTaped)];

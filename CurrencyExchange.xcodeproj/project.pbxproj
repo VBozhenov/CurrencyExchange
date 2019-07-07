@@ -19,6 +19,7 @@
 		E7901FFF22CFDF7B00E141CA /* RatesCollectionViewController..m in Sources */ = {isa = PBXBuildFile; fileRef = E7901FFE22CFDF7B00E141CA /* RatesCollectionViewController..m */; };
 		E7B3A2E822C1EF7100DD5724 /* RatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2E722C1EF7100DD5724 /* RatesViewController.m */; };
 		E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */; };
+		E7BD84FA22D13BF600B9E501 /* RatesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BD84F922D13BF600B9E501 /* RatesCollectionViewCell.m */; };
 		E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D19E9B22C6843D0068B186 /* NetworkService.m */; };
 		E7EED80A22CB9F290024D928 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EED80922CB9F290024D928 /* MapViewController.m */; };
 		E7EED80D22CBFC6C0024D928 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EED80C22CBFC6C0024D928 /* LocationService.m */; };
@@ -48,6 +49,8 @@
 		E7B3A2E722C1EF7100DD5724 /* RatesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatesViewController.m; sourceTree = "<group>"; };
 		E7B3A2F122C2A45800DD5724 /* CurrencyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrencyTableViewCell.h; sourceTree = "<group>"; };
 		E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyTableViewCell.m; sourceTree = "<group>"; };
+		E7BD84F822D13BF600B9E501 /* RatesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatesCollectionViewCell.h; sourceTree = "<group>"; };
+		E7BD84F922D13BF600B9E501 /* RatesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatesCollectionViewCell.m; sourceTree = "<group>"; };
 		E7D19E9A22C6843D0068B186 /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
 		E7D19E9B22C6843D0068B186 /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
 		E7EED80822CB9F290024D928 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 			children = (
 				E7B3A2F122C2A45800DD5724 /* CurrencyTableViewCell.h */,
 				E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */,
+				E7BD84F822D13BF600B9E501 /* RatesCollectionViewCell.h */,
+				E7BD84F922D13BF600B9E501 /* RatesCollectionViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				E77688BF22BC49E7009495B9 /* main.m in Sources */,
 				E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */,
 				E7799D2422C7DC0A00D0307E /* DetailedViewController.m in Sources */,
+				E7BD84FA22D13BF600B9E501 /* RatesCollectionViewCell.m in Sources */,
 				E77688C722BC53FC009495B9 /* MainViewController.m in Sources */,
 				E7B3A2E822C1EF7100DD5724 /* RatesViewController.m in Sources */,
 				E7EED80A22CB9F290024D928 /* MapViewController.m in Sources */,
