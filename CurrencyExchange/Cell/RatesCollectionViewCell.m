@@ -32,7 +32,6 @@
                                                                       80)];
         [self.currencyName setTextAlignment:NSTextAlignmentCenter];
         [self.currencyName setNumberOfLines:0];
-        [self.currencyName setBackgroundColor:[UIColor redColor]];
         [self.currencyName setFont:[UIFont systemFontOfSize:15
                                                      weight:UIFontWeightThin]];
         

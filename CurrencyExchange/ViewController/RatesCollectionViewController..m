@@ -42,7 +42,7 @@
                                              collectionViewLayout:layout];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     [self.collectionView setDataSource:self];
-    [self.collectionView registerClass:[UICollectionViewCell class]
+    [self.collectionView registerClass:[RatesCollectionViewCell class]
             forCellWithReuseIdentifier:@"Cell"];
     
     [self.view addSubview:self.collectionView];
@@ -71,63 +71,16 @@
     return self.rates.count;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-
-//    self.name.text = nil;
-//    self.value.text = nil;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    self.name.text = nil;
-//    self.value.text = nil;
-
-}
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-//    RatesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    RatesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 
-    
     [cell setBackgroundColor:[UIColor lightGrayColor]];
     
-    NSArray<Currency*> *data = [[NSArray alloc] init];
-    
     if (self.searchController.isActive && [self.searchRates count] > 0) {
-        data = self.searchRates;
-//        [cell setupCellWithCurrency:self.searchRates[indexPath.row]];
+        [cell setupCellWithCurrency:self.searchRates[indexPath.row]];
     } else {
-        data = self.rates;
-//        [cell setupCellWithCurrency:self.rates[indexPath.row]];
+        [cell setupCellWithCurrency:self.rates[indexPath.row]];
     }
-    
-    
-    self.name = [[UILabel alloc] initWithFrame:CGRectMake(8,
-                                                          8,
-                                                          [cell bounds].size.width - 16,
-                                                          80)];
-    [self.name setTextAlignment:NSTextAlignmentCenter];
-    [self.name setNumberOfLines:0];
-    [self.name setFont:[UIFont systemFontOfSize:15
-                                         weight:UIFontWeightThin]];
-    self.name.text = [NSString stringWithFormat:@"%@ %@",
-                      data[indexPath.row].nominal,
-                      data[indexPath.row].name];
-
-    [cell addSubview:self.name];
-
-    self.value = [[UILabel alloc] initWithFrame:CGRectMake(8,
-                                                           [cell bounds].size.height - 100,
-                                                           [cell bounds].size.width - 16,
-                                                           80)];
-    [self.value setTextAlignment:NSTextAlignmentCenter];
-    [self.value setNumberOfLines:0];
-    [self.value setFont:[UIFont systemFontOfSize:15
-                                          weight:UIFontWeightBold]];
-    self.value.text = [NSString stringWithFormat:@"%.4f",
-                       [data[indexPath.row].value floatValue]];
-
-    [cell addSubview:self.value];
     
     return cell;
 }
