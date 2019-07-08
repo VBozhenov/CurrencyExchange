@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-    
+
     [self setTitle:[NSString stringWithFormat:@"%@",
                     self.currency.charCode]];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];

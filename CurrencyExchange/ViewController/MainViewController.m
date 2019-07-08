@@ -10,9 +10,10 @@
 #import "RatesViewController.h"
 #import "MapViewController.h"
 #import "NetworkService.h"
+#import "TabBar.h"
 #import "Currency.h"
 
-@interface MainViewController () <UIPickerViewDelegate, UIPickerViewDelegate>
+@interface MainViewController () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableArray *rates;
 @property (nonatomic, strong) NSMutableArray *names;
@@ -36,8 +37,9 @@ double toValue = 1;
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-    [self setTitle:@"Currency Exchange"];
-    [self.navigationController.navigationBar setPrefersLargeTitles:true];
+//    [self setTitle:@"Currency Exchange"];
+//    [self.navigationController.navigationBar setPrefersLargeTitles:true];
+
     
     Currency *rub = [Currency new];
     rub.charCode = @"RUB";
@@ -156,26 +158,22 @@ double toValue = 1;
     [self.view addSubview:self.inputValueTextField];
     
     //Button
-    UIButton *buttonToMap = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width / 2 - 200,
-                                                                       680,
-                                                                       400,
-                                                                       50)];
-    [buttonToMap setBackgroundColor:[UIColor blueColor]];
-    [buttonToMap setTitle:@"Find nearest exchange office" forState:normal];
-    [buttonToMap addTarget:self
-                    action:@selector(toMapViewButtonTaped)
-          forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buttonToMap];
-    
-    //BarButtonItem
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Rates"
-                                                                      style:(UIBarButtonItemStylePlain)
-                                                                     target:self
-                                                                     action:@selector(barButtonTaped)];
-    self.navigationItem.rightBarButtonItem = barButtonItem;
+    UIButton *buttonToRates = [[UIButton alloc] initWithFrame:CGRectMake([self.view bounds].size.width /2 - 50,
+                                                                         [self.view bounds].size.height - 150,
+                                                                         100,
+                                                                         50)];
+    [buttonToRates setBackgroundColor:[UIColor blueColor]];
+    [buttonToRates setTitle:@"Rates" forState:normal];
+    [buttonToRates addTarget:self
+                      action:@selector(buttonToRatesTaped)
+            forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buttonToRates];
 }
 
-- (void) barButtonTaped {
+
+
+- (void) buttonToRatesTaped {
+    
     RatesViewController *ratesViewController = [[RatesViewController alloc] init];
     ratesViewController.rates = self.rates;
     [self.navigationController pushViewController:ratesViewController
@@ -205,13 +203,5 @@ double toValue = 1;
     }
 }
 
-- (void) toMapViewButtonTaped {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        MapViewController *mapViewController = [[MapViewController alloc] init];
-        [self.navigationController pushViewController:mapViewController
-                                             animated:true];
-    });
-}
 
 @end
