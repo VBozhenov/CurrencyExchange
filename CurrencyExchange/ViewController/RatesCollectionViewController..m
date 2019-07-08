@@ -42,6 +42,7 @@
                                              collectionViewLayout:layout];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     [self.collectionView setDataSource:self];
+    [self.collectionView setDelegate:self];
     [self.collectionView registerClass:[RatesCollectionViewCell class]
             forCellWithReuseIdentifier:@"Cell"];
     
