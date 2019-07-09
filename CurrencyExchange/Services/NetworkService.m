@@ -21,10 +21,10 @@
     return instance;
 }
 
-- (void)getRates:(void (^)(NSArray *rates))completion {
+- (void)getRates:(void (^)(NSArray<Currency*> *rates))completion {
     [self load:MAIN_URL withCompletion:^(id  _Nullable result) {
+        NSArray<Currency*>* currencies = [[DataService sharedInstance] getAllCurrencies];
         NSDictionary *dict = result;
-        NSMutableArray *resultObjects = [NSMutableArray new];
         [dict[@"Valute"] enumerateKeysAndObjectsUsingBlock:^(NSString *key,
                                                              NSDictionary *obj,
                                                              BOOL * _Nonnull stop) {
@@ -33,10 +33,23 @@
                                    @"name": [obj objectForKey:@"Name"],
                                    @"value": [obj objectForKey:@"Value"],
                                    @"previous": [obj objectForKey:@"Previous"]};
-            Currency *model = [[Currency alloc] initFromDictionary:rate];
-            [resultObjects addObject:model];
+            if (currencies.count == 0) {
+                [[DataService sharedInstance] createCurrencyWithCharCode:[rate valueForKey:@"charCode"]
+                                                             withNominal:[rate valueForKey:@"nominal"]
+                                                                withName:[rate valueForKey:@"name"]
+                                                               withValue:[rate valueForKey:@"value"]
+                                                            withPrevious:[rate valueForKey:@"previous"]
+                                                          withIsFavorite:false];
+            } else {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.charCode == %@", [rate valueForKey:@"charCode"]];
+                Currency *result = [[currencies filteredArrayUsingPredicate:predicate] firstObject];
+                result.value = [[rate valueForKey:@"value"] doubleValue];
+                result.previous= [[rate valueForKey:@"previous"] doubleValue];
+                [[DataService sharedInstance] save];
+            }
+            
         }];
-        completion(resultObjects);
+        completion([[DataService sharedInstance] getAllCurrencies]);
     }];
 }
 
@@ -48,7 +61,7 @@
                                      completion([NSJSONSerialization JSONObjectWithData:data
                                                                                 options:NSJSONReadingMutableContainers
                                                                                   error:nil]);
-    }] resume] ;
+                                 }] resume] ;
 }
 
 

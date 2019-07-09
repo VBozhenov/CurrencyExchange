@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
-#import "Currency.h"
+#import "Currency+CoreDataProperties.h"
 
 @interface RatesViewController : UIViewController
-@property (nonatomic, strong) NSMutableArray *rates;
+@property (nonatomic, strong) NSArray<Currency*> *rates;
 
 @end

@@ -58,11 +58,11 @@
 }
 
 - (void)setupCellWithCurrency:(Currency*)currency {
-    self.currencyName.text = [NSString stringWithFormat:@"%@ %@",
+    self.currencyName.text = [NSString stringWithFormat:@"%d %@",
                               currency.nominal,
                               currency.name];
     self.currencyValue.text = [NSString stringWithFormat:@"%.4f",
-                               [currency.value floatValue]];
+                               currency.value];
 }
 
 @end

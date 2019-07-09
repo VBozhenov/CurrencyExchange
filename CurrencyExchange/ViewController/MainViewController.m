@@ -11,13 +11,11 @@
 #import "MapViewController.h"
 #import "NetworkService.h"
 #import "TabBar.h"
-#import "Currency.h"
+#import "DataService.h"
 
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
-@property (nonatomic, strong) NSMutableArray *rates;
-@property (nonatomic, strong) NSMutableArray *names;
-
+@property (nonatomic, strong) NSArray<Currency *> *rates;
 
 @property (nonatomic,strong) UIPickerView *fromPicker;
 @property (nonatomic,strong) UIPickerView *toPicker;
@@ -37,37 +35,16 @@ double toValue = 1;
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-//    [self setTitle:@"Currency Exchange"];
-//    [self.navigationController.navigationBar setPrefersLargeTitles:true];
 
-    
-    Currency *rub = [Currency new];
-    rub.charCode = @"RUB";
-    rub.nominal = @1;
-    rub.name = @"Российский рубль";
-    rub.value = @1.0;
-    rub.previous = @1.0;
-    
-    self.rates = [NSMutableArray new];
-    [self.rates addObject:rub];
-    self.names = [NSMutableArray new];
-    self.names[0] = @"Российский рубль";
-    
-    
-    [[NetworkService sharedInstance] getRates:^(NSArray *rates) {
-        
-        [self.rates addObjectsFromArray:rates];
-        [rates enumerateObjectsUsingBlock:^(Currency* obj,
-                                            NSUInteger idx,
-                                            BOOL * _Nonnull stop) {
-            [self.names addObject:obj.name];
+    [[NetworkService sharedInstance] getRates:^(NSArray<Currency*> *rates) {
+        self.rates = rates;
+        NSLog(@"000 %d", self.rates[30].nominal);
+        NSLog(@"111 %lu", (unsigned long)self.rates.count);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.fromPicker reloadAllComponents];
                 [self.toPicker reloadAllComponents];
                 
             });
-            
-        }];
     }];
     
     //PickerView
@@ -185,20 +162,19 @@ double toValue = 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    return self.names.count;
+    return self.rates.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return self.names[row];
+    return self.rates[row].name;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
     if (pickerView == self.fromPicker) {
-        fromValue = [[self.rates[row] valueForKey:@"value"] doubleValue] / [[self.rates[row] valueForKey:@"nominal"] doubleValue];
-        [self updateResults];
+        fromValue = self.rates[row].value / self.rates[row].nominal;
     } else {
-        toValue = [[self.rates[row] valueForKey:@"value"] doubleValue] / [[self.rates[row] valueForKey:@"nominal"] doubleValue];
+        toValue = self.rates[row].value / self.rates[row].nominal;
         [self updateResults];
     }
 }

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UILabel *currencyName;
 @property (nonatomic, strong) UILabel *currencyValue;
+@property (nonatomic, strong) UILabel *isFavorite;
 
 @end
 
@@ -28,11 +29,22 @@
     
     if (self) {
         
-        self.currencyName = [[UILabel alloc] initWithFrame:CGRectMake(8,
+        self.isFavorite = [[UILabel alloc] initWithFrame:CGRectMake(5,
+                                                                    20,
+                                                                    15,
+                                                                    15)];
+        [self.isFavorite setTextAlignment:NSTextAlignmentCenter];
+        [self.isFavorite setTextColor:[UIColor grayColor]];
+        [self.isFavorite setFont:[UIFont systemFontOfSize:15
+                                                     weight:UIFontWeightThin]];
+        [self.contentView addSubview:self.isFavorite];
+        
+        self.currencyName = [[UILabel alloc] initWithFrame:CGRectMake(40,
                                                                       20,
-                                                                      300,
+                                                                      250,
                                                                       20)];
         [self.currencyName setTextAlignment:NSTextAlignmentLeft];
+        [self.currencyName setNumberOfLines:0];
         [self.currencyName setFont:[UIFont systemFontOfSize:15
                                                      weight:UIFontWeightThin]];
         [self.contentView addSubview:self.currencyName];
@@ -64,11 +76,12 @@
 }
 
 - (void)setupCellWithCurrency:(Currency*)currency {
-    self.currencyName.text = [NSString stringWithFormat:@"%@ %@",
+    self.isFavorite.text = @"★";
+    self.currencyName.text = [NSString stringWithFormat:@"%d %@",
                               currency.nominal,
                               currency.name];
     self.currencyValue.text = [NSString stringWithFormat:@"%.4f",
-                               [currency.value floatValue]];
+                               currency.value];
 }
 
 @end
