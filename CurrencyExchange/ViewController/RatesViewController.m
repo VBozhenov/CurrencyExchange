@@ -116,4 +116,10 @@
     [self.navigationController pushViewController:ratesCollectionViewController
                                          animated:true];
 }
+
+
+- (void) isFavoriteTaped {
+    
+}
+
 @end

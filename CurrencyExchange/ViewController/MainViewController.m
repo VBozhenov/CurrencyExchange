@@ -38,8 +38,6 @@ double toValue = 1;
 
     [[NetworkService sharedInstance] getRates:^(NSArray<Currency*> *rates) {
         self.rates = rates;
-        NSLog(@"000 %d", self.rates[30].nominal);
-        NSLog(@"111 %lu", (unsigned long)self.rates.count);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.fromPicker reloadAllComponents];
                 [self.toPicker reloadAllComponents];
