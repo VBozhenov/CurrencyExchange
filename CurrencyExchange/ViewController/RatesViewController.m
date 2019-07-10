@@ -47,7 +47,7 @@
                                                [self.view bounds].size.height - 70,
                                                [self.view bounds].size.width - 10,
                                                50)];
-    [self.segmentedControl setSelectedSegmentIndex:0];
+    [self.segmentedControl setSelectedSegmentIndex:1];
     [self.segmentedControl addTarget:self action:@selector(changeSegment) forControlEvents:(UIControlEventValueChanged)];
 
     [self.view addSubview:self.segmentedControl];
