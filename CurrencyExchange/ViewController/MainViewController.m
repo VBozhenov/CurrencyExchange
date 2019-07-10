@@ -12,6 +12,7 @@
 #import "NetworkService.h"
 #import "TabBar.h"
 #import "DataService.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
@@ -35,7 +36,7 @@ double toValue = 1;
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-
+        
     [[NetworkService sharedInstance] getRates:^(NSArray<Currency*> *rates) {
         self.rates = rates;
             dispatch_async(dispatch_get_main_queue(), ^{

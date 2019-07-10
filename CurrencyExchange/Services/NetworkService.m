@@ -58,9 +58,11 @@
                                  completionHandler:^(NSData * _Nullable data,
                                                      NSURLResponse * _Nullable response,
                                                      NSError * _Nullable error) {
-                                     completion([NSJSONSerialization JSONObjectWithData:data
-                                                                                options:NSJSONReadingMutableContainers
-                                                                                  error:nil]);
+                                     if (!error) {
+                                         completion([NSJSONSerialization JSONObjectWithData:data
+                                                                                    options:NSJSONReadingMutableContainers
+                                                                                      error:nil]);
+                                     }
                                  }] resume] ;
 }
 
