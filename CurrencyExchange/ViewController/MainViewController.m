@@ -12,8 +12,6 @@
 #import "NetworkService.h"
 #import "TabBar.h"
 #import "DataService.h"
-#import <SystemConfiguration/SystemConfiguration.h>
-#import <CoreData/CoreData.h>
 
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
