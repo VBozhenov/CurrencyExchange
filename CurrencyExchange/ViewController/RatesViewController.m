@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSArray *searchRates;
 @property (nonatomic, strong) NSArray<Currency*>* currencies;
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
 
 @end
 
@@ -38,8 +39,21 @@
     [self.searchController setSearchResultsUpdater:self];
     [self.navigationItem setSearchController:self.searchController];
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
-                                                  style:UITableViewStylePlain];
+    
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"All", @"Favorite"]];
+    [self.segmentedControl setFrame:CGRectMake(5,
+                                               [self.view bounds].size.height - 70,
+                                               [self.view bounds].size.width - 10,
+                                               50)];
+    [self.segmentedControl setSelectedSegmentIndex:0];
+    [self.view addSubview:self.segmentedControl];
+    
+//    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds
+//                                                  style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,
+                                                                   0,
+                                                                   [self.view bounds].size.width,
+                                                                   [self.view bounds].size.height - 70) style:UITableViewStylePlain];
     
     self.tableView.rowHeight = 60;
     

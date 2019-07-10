@@ -26,16 +26,6 @@
         
         [self setBackgroundColor:[UIColor lightGrayColor]];
         
-//        UISegmentedControl *fromSegmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5, 200, [self.view bounds].size.width - 10, 100)];
-//        UISegmentedControl *toSegmentedControl = [[UISegmentedControl alloc] initWithFrame:CGRectMake(5, 500, [self.view bounds].size.width - 10, 100)];
-//        [fromSegmentedControl initWithItems:currency];
-//        [toSegmentedControl initWithItems:currency];
-//        [fromSegmentedControl setSelectedSegmentIndex:0];
-//        [toSegmentedControl setSelectedSegmentIndex:0];
-//        [self.view addSubview:fromSegmentedControl];
-//        [self.view addSubview:toSegmentedControl];
-
-
         self.currencyName = [[UILabel alloc] initWithFrame:CGRectMake(8,
                                                                       8,
                                                                       [self bounds].size.width - 16,
