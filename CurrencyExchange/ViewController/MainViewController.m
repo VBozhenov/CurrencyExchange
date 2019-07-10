@@ -13,6 +13,7 @@
 #import "TabBar.h"
 #import "DataService.h"
 #import <SystemConfiguration/SystemConfiguration.h>
+#import <CoreData/CoreData.h>
 
 @interface MainViewController () <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
@@ -81,6 +82,8 @@ double toValue = 1;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:true];
+    
+    self.rates = [[DataService sharedInstance] getAllCurrencies];
     
     [self.resultLabel removeFromSuperview];
     [self.inputValueTextField removeFromSuperview];
