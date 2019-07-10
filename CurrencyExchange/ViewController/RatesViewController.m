@@ -114,7 +114,6 @@
     if (self.searchController.isActive && [self.searchRates count] > 0) {
         
         if (self.segmentedControl.selectedSegmentIndex == 1) {
-//            currency = [[self.searchRates filteredArrayUsingPredicate:self.predicate] objectAtIndex:indexPath.row];
             [cell setupCellWithCurrency:[[self.searchRates filteredArrayUsingPredicate:self.favoritePredicate] objectAtIndex:indexPath.row]];
         } else {
             [cell setupCellWithCurrency:self.searchRates[indexPath.row]];
