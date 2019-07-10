@@ -10,12 +10,15 @@
 #import "CurrencyTableViewCell.h"
 #import "DetailedViewController.h"
 #import "RatesCollectionViewController.h"
+#import "DataService.h"
+#import <CoreData/CoreData.h>
 
 @interface RatesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) NSArray *searchRates;
+@property (nonatomic, strong) NSArray<Currency*>* currencies;
 
 @end
 
@@ -24,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.currencies = [[DataService sharedInstance] getAllCurrencies];
+
     [self setTitle:@"Currency rates"];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
 
@@ -109,17 +114,51 @@
 
 }
 
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewRowAction *action = [[UITableViewRowAction alloc]init];
+    
+    Currency *currency = [[Currency alloc]init];
+    
+    if (self.searchController.isActive && [self.searchRates count] > 0) {
+        currency = [self.searchRates objectAtIndex:indexPath.row];
+    } else {
+        currency = [self.rates objectAtIndex:indexPath.row];
+    }
+    
+    if (currency.isFavorite) {
+        action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Remove from Favorites" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+            
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.charCode == %@", currency.charCode];
+            Currency *result = [[self.currencies filteredArrayUsingPredicate:predicate] firstObject];
+            result.isFavorite = false;
+            currency.isFavorite = false;
+            [[DataService sharedInstance] save];
+            [tableView reloadData];
+        }];
+    } else {
+        action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Add to Favorites" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+            
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.charCode == %@", currency.charCode];
+            Currency *result = [[self.currencies filteredArrayUsingPredicate:predicate] firstObject];
+            result.isFavorite = true;
+            currency.isFavorite = true;
+            [[DataService sharedInstance] save];
+            [tableView reloadData];
+        }];
+        
+        [action setBackgroundColor:[UIColor blueColor]];
+    }
+    
+    NSArray* actionArray = @[action];
+    return actionArray;
+}
+
 -(void)barButtonTaped {
    
     RatesCollectionViewController *ratesCollectionViewController = [[RatesCollectionViewController alloc] init];
     ratesCollectionViewController.rates = self.rates;
     [self.navigationController pushViewController:ratesCollectionViewController
                                          animated:true];
-}
-
-
-- (void) isFavoriteTaped {
-    
 }
 
 @end

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UILabel *currencyName;
 @property (nonatomic, strong) UILabel *currencyValue;
+@property (nonatomic, strong) UILabel *isFavorite;
 
 @end
 
@@ -27,6 +28,17 @@
                 reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        
+        self.isFavorite = [[UILabel alloc] initWithFrame:CGRectMake(5,
+                                                                    20,
+                                                                    15,
+                                                                    15)];
+        [self.isFavorite setTextAlignment:NSTextAlignmentCenter];
+        self.isFavorite.text = @"★";
+        [self.isFavorite setFont:[UIFont systemFontOfSize:15
+                                                   weight:UIFontWeightThin]];
+        [self.contentView addSubview:self.isFavorite];
+
         
         self.currencyName = [[UILabel alloc] initWithFrame:CGRectMake(40,
                                                                       20,
@@ -65,6 +77,11 @@
 }
 
 - (void)setupCellWithCurrency:(Currency*)currency {
+    if (currency.isFavorite) {
+        [self.isFavorite setTextColor:[UIColor orangeColor]];
+    } else {
+        [self.isFavorite setTextColor:[UIColor grayColor]];
+    }
     self.currencyName.text = [NSString stringWithFormat:@"%d %@",
                               currency.nominal,
                               currency.name];
