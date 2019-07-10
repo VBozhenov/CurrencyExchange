@@ -34,6 +34,9 @@ double toValue = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.rates = [[DataService sharedInstance] getAllCurrencies];
+
+    
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
         
     [[NetworkService sharedInstance] getRates:^(NSArray<Currency*> *rates) {
@@ -81,7 +84,6 @@ double toValue = 1;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:true];
     
-    self.rates = [[DataService sharedInstance] getAllCurrencies];
     
     [self.resultLabel removeFromSuperview];
     [self.inputValueTextField removeFromSuperview];
