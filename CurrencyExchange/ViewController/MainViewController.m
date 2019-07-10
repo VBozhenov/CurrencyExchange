@@ -173,8 +173,8 @@ double toValue = 1;
         fromValue = self.rates[row].value / self.rates[row].nominal;
     } else {
         toValue = self.rates[row].value / self.rates[row].nominal;
-        [self updateResults];
     }
+    [self updateResults];
 }
 
 
