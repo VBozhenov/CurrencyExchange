@@ -10,6 +10,5 @@
 
 @interface StartViewController : UIViewController
 
-
 @end
 

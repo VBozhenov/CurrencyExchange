@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Currency.h"
+#import "Currency+CoreDataProperties.h"
+#import "RatesViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

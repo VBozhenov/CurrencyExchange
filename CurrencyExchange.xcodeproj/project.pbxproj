@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E75AE71B22C17CF80039BF91 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE71A22C17CF80039BF91 /* Currency.m */; };
 		E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688B022BC49E7009495B9 /* AppDelegate.m */; };
 		E77688B422BC49E7009495B9 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688B322BC49E7009495B9 /* StartViewController.m */; };
 		E77688B922BC49E7009495B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E77688B822BC49E7009495B9 /* Assets.xcassets */; };
@@ -20,14 +19,16 @@
 		E7B3A2E822C1EF7100DD5724 /* RatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2E722C1EF7100DD5724 /* RatesViewController.m */; };
 		E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */; };
 		E7BD84FA22D13BF600B9E501 /* RatesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BD84F922D13BF600B9E501 /* RatesCollectionViewCell.m */; };
+		E7BD85A222D5232B00B9E501 /* Currency.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7BD85A022D5232A00B9E501 /* Currency.xcdatamodeld */; };
+		E7BD85AB22D5240D00B9E501 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BD85AA22D5240D00B9E501 /* DataService.m */; };
+		E7BD85BC22D53FC800B9E501 /* Currency+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BD85BA22D53FC800B9E501 /* Currency+CoreDataClass.m */; };
+		E7BD85BD22D53FC800B9E501 /* Currency+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BD85BB22D53FC800B9E501 /* Currency+CoreDataProperties.m */; };
 		E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D19E9B22C6843D0068B186 /* NetworkService.m */; };
 		E7EED80A22CB9F290024D928 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EED80922CB9F290024D928 /* MapViewController.m */; };
 		E7EED80D22CBFC6C0024D928 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = E7EED80C22CBFC6C0024D928 /* LocationService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E75AE71922C17CF80039BF91 /* Currency.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
-		E75AE71A22C17CF80039BF91 /* Currency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 		E77688AC22BC49E7009495B9 /* CurrencyExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77688AF22BC49E7009495B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E77688B022BC49E7009495B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +52,13 @@
 		E7B3A2F222C2A45800DD5724 /* CurrencyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrencyTableViewCell.m; sourceTree = "<group>"; };
 		E7BD84F822D13BF600B9E501 /* RatesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatesCollectionViewCell.h; sourceTree = "<group>"; };
 		E7BD84F922D13BF600B9E501 /* RatesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatesCollectionViewCell.m; sourceTree = "<group>"; };
+		E7BD85A122D5232B00B9E501 /* Currency.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Currency.xcdatamodel; sourceTree = "<group>"; };
+		E7BD85A922D5240D00B9E501 /* DataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
+		E7BD85AA22D5240D00B9E501 /* DataService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataService.m; sourceTree = "<group>"; };
+		E7BD85B822D53FC800B9E501 /* Currency+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Currency+CoreDataProperties.h"; sourceTree = "<group>"; };
+		E7BD85B922D53FC800B9E501 /* Currency+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Currency+CoreDataClass.h"; sourceTree = "<group>"; };
+		E7BD85BA22D53FC800B9E501 /* Currency+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Currency+CoreDataClass.m"; sourceTree = "<group>"; };
+		E7BD85BB22D53FC800B9E501 /* Currency+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Currency+CoreDataProperties.m"; sourceTree = "<group>"; };
 		E7D19E9A22C6843D0068B186 /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
 		E7D19E9B22C6843D0068B186 /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
 		E7EED80822CB9F290024D928 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -127,8 +135,11 @@
 		E7B3A2F022C2A42800DD5724 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				E75AE71922C17CF80039BF91 /* Currency.h */,
-				E75AE71A22C17CF80039BF91 /* Currency.m */,
+				E7BD85B822D53FC800B9E501 /* Currency+CoreDataProperties.h */,
+				E7BD85B922D53FC800B9E501 /* Currency+CoreDataClass.h */,
+				E7BD85BA22D53FC800B9E501 /* Currency+CoreDataClass.m */,
+				E7BD85BB22D53FC800B9E501 /* Currency+CoreDataProperties.m */,
+				E7BD85A022D5232A00B9E501 /* Currency.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -151,6 +162,8 @@
 				E7D19E9B22C6843D0068B186 /* NetworkService.m */,
 				E7EED80B22CBFC6C0024D928 /* LocationService.h */,
 				E7EED80C22CBFC6C0024D928 /* LocationService.m */,
+				E7BD85A922D5240D00B9E501 /* DataService.h */,
+				E7BD85AA22D5240D00B9E501 /* DataService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -224,11 +237,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7BD85A222D5232B00B9E501 /* Currency.xcdatamodeld in Sources */,
 				E7EED80D22CBFC6C0024D928 /* LocationService.m in Sources */,
+				E7BD85AB22D5240D00B9E501 /* DataService.m in Sources */,
 				E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */,
 				E7901FFF22CFDF7B00E141CA /* RatesCollectionViewController..m in Sources */,
 				E77688B422BC49E7009495B9 /* StartViewController.m in Sources */,
+				E7BD85BC22D53FC800B9E501 /* Currency+CoreDataClass.m in Sources */,
 				E7901FFC22CF4EFF00E141CA /* TabBar.m in Sources */,
+				E7BD85BD22D53FC800B9E501 /* Currency+CoreDataProperties.m in Sources */,
 				E77688BF22BC49E7009495B9 /* main.m in Sources */,
 				E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */,
 				E7799D2422C7DC0A00D0307E /* DetailedViewController.m in Sources */,
@@ -237,7 +254,6 @@
 				E7B3A2E822C1EF7100DD5724 /* RatesViewController.m in Sources */,
 				E7EED80A22CB9F290024D928 /* MapViewController.m in Sources */,
 				E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */,
-				E75AE71B22C17CF80039BF91 /* Currency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +439,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E7BD85A022D5232A00B9E501 /* Currency.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E7BD85A122D5232B00B9E501 /* Currency.xcdatamodel */,
+			);
+			currentVersion = E7BD85A122D5232B00B9E501 /* Currency.xcdatamodel */;
+			path = Currency.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E77688A422BC49E7009495B9 /* Project object */;
 }

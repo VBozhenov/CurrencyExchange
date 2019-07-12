@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Currency.h"
+#import "Currency+CoreDataProperties.h"
 
 @interface RatesCollectionViewController : UIViewController
 
-@property (nonatomic, strong) NSMutableArray<Currency*> *rates;
+@property (nonatomic, strong) NSArray<Currency*> *rates;
 
 @end

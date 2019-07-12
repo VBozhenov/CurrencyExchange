@@ -10,6 +10,8 @@
 
 @interface RatesCollectionViewCell ()
 
+@property (nonatomic, strong) UILabel *isFavorite;
+
 @end
 
 @implementation RatesCollectionViewCell
@@ -25,7 +27,17 @@
     if (self) {
         
         [self setBackgroundColor:[UIColor lightGrayColor]];
-
+        
+        self.isFavorite = [[UILabel alloc] initWithFrame:CGRectMake([self bounds].size.width / 2 - 15,
+                                                                    [self bounds].size.height / 2 - 15,
+                                                                    30,
+                                                                    30)];
+        [self.isFavorite setTextAlignment:NSTextAlignmentCenter];
+        self.isFavorite.text = @"★";
+        [self.isFavorite setFont:[UIFont systemFontOfSize:30
+                                                   weight:UIFontWeightThin]];
+        [self.contentView addSubview:self.isFavorite];
+        
         self.currencyName = [[UILabel alloc] initWithFrame:CGRectMake(8,
                                                                       8,
                                                                       [self bounds].size.width - 16,
@@ -58,11 +70,16 @@
 }
 
 - (void)setupCellWithCurrency:(Currency*)currency {
-    self.currencyName.text = [NSString stringWithFormat:@"%@ %@",
+    if (currency.isFavorite) {
+        [self.isFavorite setTextColor:[UIColor orangeColor]];
+    } else {
+        [self.isFavorite setTextColor:[UIColor grayColor]];
+    }
+    self.currencyName.text = [NSString stringWithFormat:@"%d %@",
                               currency.nominal,
                               currency.name];
     self.currencyValue.text = [NSString stringWithFormat:@"%.4f",
-                               [currency.value floatValue]];
+                               currency.value];
 }
 
 @end
