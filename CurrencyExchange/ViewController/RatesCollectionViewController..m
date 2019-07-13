@@ -135,6 +135,12 @@
             currency = [self.rates objectAtIndex:indexPath.row];
         }
     }
+    DetailedViewController *detailedViewController = [[DetailedViewController alloc] init];
+    detailedViewController.currency = currency;
+    [self.navigationController pushViewController:detailedViewController
+                                         animated:true];
+    [self.searchController setActive:false];
+
 }
 
 -(void)changeSegment {

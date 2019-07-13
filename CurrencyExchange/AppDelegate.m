@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "StartViewController.h"
 #import "TabBar.h"
+#import "PageViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,11 +25,16 @@
 //    self.window.rootViewController = navigationController;
 //    [self.window makeKeyAndVisible];
     
-    TabBar *tabBarViewController = [[TabBar alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tabBarViewController];
-        self.window.rootViewController = navigationController;
-//    [self.window setRootViewController:tabBarViewController];
-    [self.window makeKeyAndVisible];
+//    TabBar *tabBarViewController = [[TabBar alloc] init];
+//        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tabBarViewController];
+//        self.window.rootViewController = navigationController;
+//    [self.window makeKeyAndVisible];
+    
+        PageViewController *pageViewController = [[PageViewController alloc] init];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:pageViewController];
+            self.window.rootViewController = navigationController;
+        [self.window makeKeyAndVisible];
+
     
     return YES;
 }
