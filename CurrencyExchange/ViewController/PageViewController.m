@@ -36,7 +36,10 @@
                     animated:NO
                   completion:nil];
 
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 50.0, self.view.bounds.size.width, 50.0)];
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,
+                                                                       self.view.bounds.size.height - 50.0,
+                                                                       self.view.bounds.size.width,
+                                                                       50.0)];
     self.pageControl.numberOfPages = CONTENT_COUNT;
     self.pageControl.currentPage = 0;
     self.pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
@@ -44,7 +47,10 @@
     [self.view addSubview:self.pageControl];
     
     self.nextButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.nextButton.frame = CGRectMake(self.view.bounds.size.width - 100.0, self.view.bounds.size.height - 50.0, 100.0, 50.0);
+    self.nextButton.frame = CGRectMake(self.view.bounds.size.width - 100.0,
+                                       self.view.bounds.size.height - 200.0,
+                                       100.0,
+                                       50.0);
     [self.nextButton addTarget:self action:@selector(nextButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.nextButton setTintColor:[UIColor blackColor]];
     [self updateButtonWithIndex:0];
@@ -70,7 +76,6 @@
         return nil;
     }
     ContentViewController *contentViewController = [[ContentViewController alloc] init];
-//    contentViewController.title = contentData[index].title;
     [contentViewController setContentText:[self.content objectAtIndex:index]];
     [contentViewController setImage:[self.images objectAtIndex:index]];
     [contentViewController setIndex: index];
