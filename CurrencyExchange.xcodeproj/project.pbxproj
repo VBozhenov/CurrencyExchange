@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E75855CB22D88C9A00CD842A /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75855CA22D88C9A00CD842A /* ContentViewController.m */; };
+		E75855CE22D88DA700CD842A /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75855CD22D88DA700CD842A /* PageViewController.m */; };
+		E75855D122D9D7C200CD842A /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = E75855D022D9D7C200CD842A /* NotificationService.m */; };
 		E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688B022BC49E7009495B9 /* AppDelegate.m */; };
 		E77688B422BC49E7009495B9 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77688B322BC49E7009495B9 /* StartViewController.m */; };
 		E77688B922BC49E7009495B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E77688B822BC49E7009495B9 /* Assets.xcassets */; };
@@ -29,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E75855C922D88C9A00CD842A /* ContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		E75855CA22D88C9A00CD842A /* ContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		E75855CC22D88DA700CD842A /* PageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
+		E75855CD22D88DA700CD842A /* PageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
+		E75855CF22D9D7C200CD842A /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		E75855D022D9D7C200CD842A /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		E77688AC22BC49E7009495B9 /* CurrencyExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77688AF22BC49E7009495B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E77688B022BC49E7009495B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,6 +137,10 @@
 				E7EED80922CB9F290024D928 /* MapViewController.m */,
 				E7901FFA22CF4EFF00E141CA /* TabBar.h */,
 				E7901FFB22CF4EFF00E141CA /* TabBar.m */,
+				E75855C922D88C9A00CD842A /* ContentViewController.h */,
+				E75855CA22D88C9A00CD842A /* ContentViewController.m */,
+				E75855CC22D88DA700CD842A /* PageViewController.h */,
+				E75855CD22D88DA700CD842A /* PageViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -164,6 +177,8 @@
 				E7EED80C22CBFC6C0024D928 /* LocationService.m */,
 				E7BD85A922D5240D00B9E501 /* DataService.h */,
 				E7BD85AA22D5240D00B9E501 /* DataService.m */,
+				E75855CF22D9D7C200CD842A /* NotificationService.h */,
+				E75855D022D9D7C200CD842A /* NotificationService.m */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -199,6 +214,11 @@
 				TargetAttributes = {
 					E77688AB22BC49E7009495B9 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -239,6 +259,7 @@
 			files = (
 				E7BD85A222D5232B00B9E501 /* Currency.xcdatamodeld in Sources */,
 				E7EED80D22CBFC6C0024D928 /* LocationService.m in Sources */,
+				E75855CB22D88C9A00CD842A /* ContentViewController.m in Sources */,
 				E7BD85AB22D5240D00B9E501 /* DataService.m in Sources */,
 				E7B3A2F322C2A45800DD5724 /* CurrencyTableViewCell.m in Sources */,
 				E7901FFF22CFDF7B00E141CA /* RatesCollectionViewController..m in Sources */,
@@ -248,12 +269,14 @@
 				E7BD85BD22D53FC800B9E501 /* Currency+CoreDataProperties.m in Sources */,
 				E77688BF22BC49E7009495B9 /* main.m in Sources */,
 				E77688B122BC49E7009495B9 /* AppDelegate.m in Sources */,
+				E75855D122D9D7C200CD842A /* NotificationService.m in Sources */,
 				E7799D2422C7DC0A00D0307E /* DetailedViewController.m in Sources */,
 				E7BD84FA22D13BF600B9E501 /* RatesCollectionViewCell.m in Sources */,
 				E77688C722BC53FC009495B9 /* MainViewController.m in Sources */,
 				E7B3A2E822C1EF7100DD5724 /* RatesViewController.m in Sources */,
 				E7EED80A22CB9F290024D928 /* MapViewController.m in Sources */,
 				E7D19E9C22C6843D0068B186 /* NetworkService.m in Sources */,
+				E75855CE22D88DA700CD842A /* PageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

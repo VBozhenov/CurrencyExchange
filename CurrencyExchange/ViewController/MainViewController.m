@@ -47,24 +47,22 @@ double toValue = 1;
                 
             });
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:true];
     
-    //PickerView
-    self.fromPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0,
-                                                                     230,
-                                                                     [self.view bounds].size.width,
-                                                                     150)];
-    self.fromPicker.delegate = self;
-    self.fromPicker.dataSource = self;
-    [self.view addSubview:self.fromPicker];
-    
-    self.toPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0,
-                                                                   480,
-                                                                   [self.view bounds].size.width,
-                                                                   150)];
-    self.toPicker.delegate = self;
-    self.toPicker.dataSource = self;
-    [self.view addSubview:self.toPicker];
-    
+    [UIView animateWithDuration: 1
+                     animations:^{
+                         [self.fromPicker setFrame:CGRectMake(0,
+                                                              230,
+                                                              [self.view bounds].size.width,
+                                                              150)];
+                         [self.toPicker setFrame:CGRectMake(0,
+                                                            480,
+                                                            [self.view bounds].size.width,
+                                                            150)];
+                     }];
 }
 
 - (void) updateResults {
@@ -87,6 +85,23 @@ double toValue = 1;
     
     [self.resultLabel removeFromSuperview];
     [self.inputValueTextField removeFromSuperview];
+    
+    //PickerView
+    self.fromPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(- [self.view bounds].size.width,
+                                                                     230,
+                                                                     [self.view bounds].size.width,
+                                                                     150)];
+    self.fromPicker.delegate = self;
+    self.fromPicker.dataSource = self;
+    [self.view addSubview:self.fromPicker];
+    
+    self.toPicker = [[UIPickerView alloc] initWithFrame:CGRectMake([self.view bounds].size.width,
+                                                                   480,
+                                                                   [self.view bounds].size.width,
+                                                                   150)];
+    self.toPicker.delegate = self;
+    self.toPicker.dataSource = self;
+    [self.view addSubview:self.toPicker];
     
     //Labels
     UILabel *labelFrom = [[UILabel alloc] initWithFrame:CGRectMake(0,

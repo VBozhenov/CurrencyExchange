@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "StartViewController.h"
 #import "TabBar.h"
+#import "PageViewController.h"
+#import "NotificationService.h"
 
 @interface AppDelegate ()
 
@@ -19,16 +21,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    StartViewController *startViewController = [[StartViewController alloc] init];
-//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:startViewController];
-//    self.window.rootViewController = navigationController;
-//    [self.window makeKeyAndVisible];
     
-    TabBar *tabBarViewController = [[TabBar alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tabBarViewController];
-        self.window.rootViewController = navigationController;
-//    [self.window setRootViewController:tabBarViewController];
-    [self.window makeKeyAndVisible];
+        PageViewController *pageViewController = [[PageViewController alloc] init];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:pageViewController];
+            self.window.rootViewController = navigationController;
+        [self.window makeKeyAndVisible];
+    
+    [[NotificationService sharedInstance] registerService];
+
     
     return YES;
 }
@@ -60,5 +60,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler {
+    
+}
 @end

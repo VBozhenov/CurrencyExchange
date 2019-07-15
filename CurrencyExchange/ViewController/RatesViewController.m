@@ -12,6 +12,7 @@
 #import "RatesCollectionViewController.h"
 #import "DataService.h"
 #import <CoreData/CoreData.h>
+#import "NotificationService.h"
 
 @interface RatesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
 
@@ -40,7 +41,6 @@
     self.searchController.dimsBackgroundDuringPresentation = false;
     [self.searchController setSearchResultsUpdater:self];
     [self.navigationItem setSearchController:self.searchController];
-    
     
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"All", @"Favorite"]];
     [self.segmentedControl setFrame:CGRectMake(5,
@@ -74,7 +74,8 @@
                                                                      target:self
                                                                      action:@selector(barButtonTaped)];
     barButtonItem.image = [UIImage imageNamed:@"collection"];
-    self.navigationItem.rightBarButtonItem = barButtonItem;    
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+    
 }
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
@@ -189,6 +190,10 @@
             Currency *result = [[self.currencies filteredArrayUsingPredicate:predicate] firstObject];
             result.isFavorite = true;
             currency.isFavorite = true;
+            [[NotificationService sharedInstance] sendNotification:NotificationMake(@"Добавлено в Избранное",
+                                                                                    [NSString stringWithFormat:@"%@", currency.name],
+                                                                                    [[NSDate new] dateByAddingTimeInterval: 10],
+                                                                                    [NSURL URLWithString:@""])];
             [[DataService sharedInstance] save];
             [tableView reloadData];
         }];
@@ -211,5 +216,4 @@
 -(void)changeSegment {
     [self.tableView reloadData];
 }
-
 @end
