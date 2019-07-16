@@ -33,7 +33,7 @@
     self.currencies = [[DataService sharedInstance] getAllCurrencies];
     self.favoritePredicate = [NSPredicate predicateWithFormat:@"SELF.isFavorite == true"];
     
-    [self setTitle:@"Currency rates"];
+    [self setTitle: NSLocalizedString(@"currencyRates", @"")];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
@@ -56,7 +56,7 @@
     
     [self.view addSubview:self.collectionView];
     
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"All", @"Favorite"]];
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"all", @""), NSLocalizedString(@"favorite", @"")]];
     [self.segmentedControl setFrame:CGRectMake(5,
                                                [self.view bounds].size.height - 70,
                                                [self.view bounds].size.width - 10,

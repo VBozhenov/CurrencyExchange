@@ -109,7 +109,7 @@ double toValue = 1;
                                                                    [self.view bounds].size.width,
                                                                    50)];
     [labelFrom setTextColor:[UIColor blueColor]];
-    [labelFrom setText:@"Convert from:"];
+    [labelFrom setText: NSLocalizedString(@"convertFrom", @"")];
     [labelFrom setTextAlignment:(NSTextAlignmentCenter)];
     [labelFrom setFont:[UIFont systemFontOfSize:30
                                          weight:(UIFontWeightBold)]];
@@ -120,7 +120,7 @@ double toValue = 1;
                                                                  [self.view bounds].size.width,
                                                                  50)];
     [labelTo setTextColor:[UIColor blueColor]];
-    [labelTo setText:@"Convert to:"];
+    [labelTo setText: NSLocalizedString(@"convertTo", @"")];
     [labelTo setTextAlignment:(NSTextAlignmentCenter)];
     [labelTo setFont:[UIFont systemFontOfSize:30
                                        weight:(UIFontWeightBold)]];
@@ -145,7 +145,7 @@ double toValue = 1;
     self.inputValueTextField.delegate = self;
     [self.inputValueTextField setBackgroundColor:[UIColor whiteColor]];
     [self.inputValueTextField setBorderStyle:(UITextBorderStyleLine)];
-    [self.inputValueTextField setPlaceholder:@"Enter value"];
+    [self.inputValueTextField setPlaceholder: NSLocalizedString(@"enterValue", @"")];
     [self.inputValueTextField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
     [self.inputValueTextField addTarget:self action:@selector(updateResults)
                        forControlEvents:(UIControlEventEditingChanged)];
@@ -157,7 +157,7 @@ double toValue = 1;
                                                                          100,
                                                                          50)];
     [buttonToRates setBackgroundColor:[UIColor blueColor]];
-    [buttonToRates setTitle:@"Rates" forState:normal];
+    [buttonToRates setTitle: NSLocalizedString(@"rates", @"") forState:normal];
     [buttonToRates addTarget:self
                       action:@selector(buttonToRatesTaped)
             forControlEvents:UIControlEventTouchUpInside];

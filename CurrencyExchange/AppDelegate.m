@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "StartViewController.h"
+//#import "StartViewController.h"
 #import "TabBar.h"
 #import "PageViewController.h"
 #import "NotificationService.h"

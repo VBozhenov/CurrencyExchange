@@ -63,10 +63,10 @@
                    [UIImage imageNamed:@"3"],
                    [UIImage imageNamed:@"4"],
                    nil];
-    self.content = [NSArray arrayWithObjects:@"КОНВЕРТЕР ВАЛЮТ",
-                    @"ТЕКУЩИЕ КОТИРОВКИ",
-                    @"ИЗБРАННОЕ",
-                    @"БЛИЖАЙШИЕ ОБМЕННЫЕ ПУНКТЫ",
+    self.content = [NSArray arrayWithObjects: NSLocalizedString(@"currencyConverter", @""),
+                    NSLocalizedString(@"currentRates", @""),
+                    NSLocalizedString(@"favorite", @""),
+                    NSLocalizedString(@"nearestExchangeOffices", @""),
                     nil];
 }
 
@@ -96,11 +96,11 @@
         case 0:
         case 1:
         case 2:
-            [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+            [self.nextButton setTitle: NSLocalizedString(@"next", @"") forState:UIControlStateNormal];
             self.nextButton.tag = 0;
             break;
         case 3:;
-            [self.nextButton setTitle:@"Done" forState:UIControlStateNormal];
+            [self.nextButton setTitle: NSLocalizedString(@"done", @"") forState:UIControlStateNormal];
             self.nextButton.tag = 1;
             break;
         default:

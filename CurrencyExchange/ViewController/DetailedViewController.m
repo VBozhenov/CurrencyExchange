@@ -48,7 +48,7 @@
     [self.currencyRate setTextColor:[UIColor blueColor]];
     [self.currencyRate setText:[NSString stringWithFormat:@"%.4f %@",
                                 self.currency.value,
-                                @"руб"]];
+                                NSLocalizedString(@"rub", @"")]];
     [self.currencyRate setTextAlignment:(NSTextAlignmentCenter)];
     [self.currencyRate setFont:[UIFont systemFontOfSize:30
                                                 weight:(UIFontWeightBold)]];

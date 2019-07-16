@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self setTitle:@"Currency Exchange"];
+    [self setTitle:NSLocalizedString(@"currencyExchange", @"")];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
     
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];

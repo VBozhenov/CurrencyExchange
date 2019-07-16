@@ -33,7 +33,7 @@
     self.currencies = [[DataService sharedInstance] getAllCurrencies];
     self.favoritePredicate = [NSPredicate predicateWithFormat:@"SELF.isFavorite == true"];
 
-    [self setTitle:@"Currency rates"];
+    [self setTitle: NSLocalizedString(@"currencyRates", @"")];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
 
     
@@ -42,7 +42,7 @@
     [self.searchController setSearchResultsUpdater:self];
     [self.navigationItem setSearchController:self.searchController];
     
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"All", @"Favorite"]];
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"all", @""), NSLocalizedString(@"favorite", @"")]];
     [self.segmentedControl setFrame:CGRectMake(5,
                                                [self.view bounds].size.height - 70,
                                                [self.view bounds].size.width - 10,
@@ -174,7 +174,7 @@
     }
     
     if (currency.isFavorite) {
-        action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Remove from Favorites" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title: NSLocalizedString(@"removeFromFavorites", @"") handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
             
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.charCode == %@", currency.charCode];
             Currency *result = [[self.currencies filteredArrayUsingPredicate:predicate] firstObject];
@@ -184,13 +184,13 @@
             [tableView reloadData];
         }];
     } else {
-        action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Add to Favorites" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title: NSLocalizedString(@"addToFavorites", @"") handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
             
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.charCode == %@", currency.charCode];
             Currency *result = [[self.currencies filteredArrayUsingPredicate:predicate] firstObject];
             result.isFavorite = true;
             currency.isFavorite = true;
-            [[NotificationService sharedInstance] sendNotification:NotificationMake(@"Добавлено в Избранное",
+            [[NotificationService sharedInstance] sendNotification:NotificationMake(NSLocalizedString(@"addedToFavorites", @""),
                                                                                     [NSString stringWithFormat:@"%@", currency.name],
                                                                                     [[NSDate new] dateByAddingTimeInterval: 10],
                                                                                     [NSURL URLWithString:@""])];
