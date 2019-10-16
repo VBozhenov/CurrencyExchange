@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self setTitle:@"Currency Exchange"];
+    [self setTitle:NSLocalizedString(@"currencyExchange", @"")];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
     
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
@@ -39,10 +39,13 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(locationWasUpdate:)
-                                                 name:kLocationUpdate object:nil];
+                                                 name:kLocationUpdate
+                                               object:nil];
     
 }
+
 - (void)locationWasUpdate:(NSNotification*)notification {
+    
     self.location = notification.object;
     
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
@@ -50,6 +53,7 @@
     request.region = MKCoordinateRegionMakeWithDistance([self.location coordinate],
                                                         100000,
                                                         100000);
+    
     MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response,
                                          NSError *error)
@@ -59,7 +63,7 @@
          else {
              for (MKMapItem *item in response.mapItems) {
                  [self setAnotation: item
-                           location: notification.object];
+                           location: self.location];
              }
          }
      }];

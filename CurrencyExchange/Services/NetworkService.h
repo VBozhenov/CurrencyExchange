@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Currency.h"
-
+#import "Currency+CoreDataProperties.h"
+#import "DataService.h"
 
 @interface NetworkService : NSObject
 
 + (instancetype)sharedInstance;
 
-- (void)getRates:(void (^)(NSArray *rates))completion;
+- (void)getRates:(void (^)(NSArray<Currency*> *rates))completion;
 
 @end

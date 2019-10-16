@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
-    
+
     [self setTitle:[NSString stringWithFormat:@"%@",
                     self.currency.charCode]];
     [self.navigationController.navigationBar setPrefersLargeTitles:true];
@@ -32,7 +32,7 @@
                                                                  [self.view bounds].size.width,
                                                                  150)];
     [self.currencyName setTextColor:[UIColor blueColor]];
-    [self.currencyName setText: [NSString stringWithFormat:@"%@ %@",
+    [self.currencyName setText: [NSString stringWithFormat:@"%d %@",
                                  self.currency.nominal,
                                  self.currency.name]];
     [self.currencyName setTextAlignment:(NSTextAlignmentCenter)];
@@ -47,8 +47,8 @@
                                                                  50)];
     [self.currencyRate setTextColor:[UIColor blueColor]];
     [self.currencyRate setText:[NSString stringWithFormat:@"%.4f %@",
-                                [self.currency.value floatValue],
-                                @"руб"]];
+                                self.currency.value,
+                                NSLocalizedString(@"rub", @"")]];
     [self.currencyRate setTextAlignment:(NSTextAlignmentCenter)];
     [self.currencyRate setFont:[UIFont systemFontOfSize:30
                                                 weight:(UIFontWeightBold)]];
@@ -58,7 +58,7 @@
                                                                  450,
                                                                  [self.view bounds].size.width,
                                                                  50)];
-    float diff = [self.currency.value floatValue] - [self.currency.previous floatValue];
+    float diff = self.currency.value - self.currency.previous;
     
     if (diff > 0) {
         [self.difference setTextColor:[UIColor greenColor]];
