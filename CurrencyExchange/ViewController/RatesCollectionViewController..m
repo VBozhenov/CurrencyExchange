@@ -68,7 +68,7 @@
     [self.view addSubview:self.segmentedControl];
     
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    self.searchController.dimsBackgroundDuringPresentation = false;
+    self.searchController.obscuresBackgroundDuringPresentation = false;
     [self.searchController setSearchResultsUpdater:self];
     [self.navigationItem setSearchController:self.searchController];
 }

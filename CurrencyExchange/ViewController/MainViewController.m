@@ -82,6 +82,8 @@ double toValue = 1;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:true];
     
+    [self.toPicker removeFromSuperview];
+    [self.fromPicker removeFromSuperview];
     
     [self.resultLabel removeFromSuperview];
     [self.inputValueTextField removeFromSuperview];
